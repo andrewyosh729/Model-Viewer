@@ -1,0 +1,119 @@
+{
+    "version": 1,
+    "name": "CameraControls",
+    "maps": [
+        {
+            "name": "Look",
+            "id": "d6aa0b9a-3cce-4109-a8bd-b51bb263b4f6",
+            "actions": [
+                {
+                    "name": "Mouse Delta",
+                    "type": "Value",
+                    "id": "67d05cb6-5895-4b24-8de3-4ac911be7a39",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "19d38aa1-1476-46d8-8e4b-3ab1573b2e5e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Orbit",
+            "id": "04122e87-2c49-49b8-ab69-0976ca22a044",
+            "actions": [
+                {
+                    "name": "Right Click",
+                    "type": "Button",
+                    "id": "baceb0e6-0c16-46b1-8cbb-3e0fe4516f07",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "170a9d78-05f0-43be-a3f1-05f49614f8ac",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Zoom",
+            "id": "ab3b984f-d542-4317-9107-70e7c2527e82",
+            "actions": [
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "e2f76eab-3b0c-4466-8320-1c652c5cc65f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1d585719-2716-4083-b030-02ff7e030dc6",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Pan",
+            "id": "f0ee501f-bdb7-4b36-814e-1d720e8215f4",
+            "actions": [
+                {
+                    "name": "Middle Click",
+                    "type": "Button",
+                    "id": "5d4199e2-2f1a-4941-a3c9-f69a905f485f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e63758ff-125e-43ba-9d6d-17e01202e67c",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Middle Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
