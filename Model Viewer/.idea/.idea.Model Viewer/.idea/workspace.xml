@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="" />
+    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,10 +38,11 @@
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scenes/Main.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@6279e2b7c485/Editor/VisualScripting.Core/PackageEventListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Packages/manifest.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -190,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760495744234</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="f">
+      <option name="closed" value="true" />
+      <created>1760496019498</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1760496019498</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +267,8 @@
     <MESSAGE value="implement panning" />
     <MESSAGE value="packages" />
     <MESSAGE value="more packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="more packages" />
+    <MESSAGE value="f" />
+    <option name="LAST_COMMIT_MESSAGE" value="f" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
