@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/packages.config.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/packages.config.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +45,11 @@
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@19ee6e1cc8be/Runtime/Unity/LifetimeScope.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Packages/manifest.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -201,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760496019498</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="boop">
+      <option name="closed" value="true" />
+      <created>1760496982409</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760496982409</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +284,8 @@
     <MESSAGE value="packages" />
     <MESSAGE value="more packages" />
     <MESSAGE value="f" />
-    <option name="LAST_COMMIT_MESSAGE" value="f" />
+    <MESSAGE value="boop" />
+    <option name="LAST_COMMIT_MESSAGE" value="boop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
