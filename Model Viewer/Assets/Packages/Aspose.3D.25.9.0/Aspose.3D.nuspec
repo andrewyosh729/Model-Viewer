@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Aspose.3D</id>
+    <version>25.9.0</version>
+    <title>Aspose.3D for .NET</title>
+    <authors>Aspose</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">Licenses/Aspose_End-User-License-Agreement.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://products.aspose.com/3d/net</projectUrl>
+    <description>Aspose.3D for .NET is an on premise class library that enables your .NET applications to create, read, manipulate, convert and save various formats of 3D files (e.g. FBX, IFC, 3MF, USD, PDF, STL, Blender, DAE, DFX, MB, MA, glTF, U3D, etc.), without installing any 3rd party 3D modeling or rendering software.
+ 
+        Aspose.3D for .NET API enhances your .NET apps to open files of 3D formats and work with the elements within the 3D scenes; such as; line, mesh, nurbs, curves to more complex elements like animation. You can also work with textures, parametrized geometries, scene graphs, custom properties, skeletons, morph deformers and much more.
+ 
+Aspose.3D for .NET can be used on any operating system (Windows, MacOS, Linux) that can install Mono (.NET 4.0 Framework support) or use .NET Core. It is a single .NET library that you can deploy with any .NET application by simply copying it. You do not have to worry about other services or modules. Aspose.3D for .NET is designed to perform equally well on the server as well as the client-side.</description>
+    <releaseNotes>https://releases.aspose.com/3d/net/release-notes/2025/aspose-3d-for-net-25-9-release-notes/</releaseNotes>
+    <copyright>© Aspose Pty Ltd 2001-2025. All Rights Reserved.</copyright>
+    <tags>3D Aspose.3D IFC 3MF FBX Maya MA MB glb STL OBJ Wavefront 3DS Universal3D U3D Collada DAE PDF glTF glTF2 DXF PLY XYZ Point Cloud RVM ASE X VRML AMF JT OpenUSD USDZ USD Draco DRC Blender</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6" />
+      <group targetFramework="net6.0" />
+      <group targetFramework="net8.0" />
+      <group targetFramework=".NETCoreApp3.1" />
+    </dependencies>
+  </metadata>
+</package>
