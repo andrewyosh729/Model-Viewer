@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Controllers
 {
@@ -9,6 +10,12 @@ namespace Controllers
 
         private bool IsHoldingRightClick { get; set; }
         private Vector3 Pivot { get; set; }
+
+        private Vector2 AngularVelocity { get; set; }
+
+        [SerializeField] private float VelocityFalloff = 3f;
+        private Vector2 DampVelocity = Vector2.zero;
+
 
         private void Awake()
         {
@@ -26,6 +33,7 @@ namespace Controllers
         private void RightClickCanceled(InputAction.CallbackContext _)
         {
             IsHoldingRightClick = false;
+            AngularVelocity = Controls.Look.MouseDelta.ReadValue<Vector2>();
         }
 
         private void OnEnable()
@@ -42,16 +50,24 @@ namespace Controllers
         {
             if (IsHoldingRightClick)
             {
-                RotateAroundPivot();
+                Vector2 rotationInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
+                RotateAroundPivot(rotationInput);
+                return;
+            }
+
+            if (AngularVelocity.magnitude > 0)
+            {
+                RotateAroundPivot(AngularVelocity);
+                AngularVelocity =
+                    Vector2.SmoothDamp(AngularVelocity, Vector2.zero, ref DampVelocity, 1f / VelocityFalloff);
             }
         }
 
-        private void RotateAroundPivot()
+        private void RotateAroundPivot(Vector2 amount)
         {
-            Vector2 rotationInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
             Vector3 offset = Pivot - transform.position;
-            Quaternion rotation = Quaternion.AngleAxis(rotationInput.x, Vector3.up) *
-                                  Quaternion.AngleAxis(-rotationInput.y, transform.right);
+            Quaternion rotation = Quaternion.AngleAxis(amount.x, Vector3.up) *
+                                  Quaternion.AngleAxis(-amount.y, transform.right);
             Vector3 rotatedOffset = rotation * offset;
             transform.position = Pivot - rotatedOffset;
             transform.rotation = rotation * transform.rotation;
