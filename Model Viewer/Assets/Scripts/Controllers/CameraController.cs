@@ -7,14 +7,13 @@ namespace Controllers
     public class CameraController : MonoBehaviour
     {
         private CameraControls Controls { get; set; }
-
         private bool IsHoldingRightClick { get; set; }
+        private bool IsHoldingMiddleClick { get; set; }
         private Vector3 Pivot { get; set; }
-
         private Vector2 AngularVelocity { get; set; }
-
-        [SerializeField] private float VelocityFalloff = 3f;
         private Vector2 DampVelocity = Vector2.zero;
+        [SerializeField] private float VelocityFalloff = 3f;
+        [SerializeField] private float PanSpeed = 0.01f;
 
 
         private void Awake()
@@ -22,6 +21,20 @@ namespace Controllers
             Controls = new CameraControls();
             Controls.Orbit.RightClick.started += RightClickStarted;
             Controls.Orbit.RightClick.canceled += RightClickCanceled;
+
+            Controls.Pan.MiddleClick.started += MiddleClickStarted;
+            Controls.Pan.MiddleClick.canceled += MiddleClickCanceled;
+        }
+
+
+        private void MiddleClickStarted(InputAction.CallbackContext obj)
+        {
+            IsHoldingMiddleClick = true;
+        }
+
+        private void MiddleClickCanceled(InputAction.CallbackContext obj)
+        {
+            IsHoldingMiddleClick = false;
         }
 
         private void RightClickStarted(InputAction.CallbackContext _)
@@ -48,14 +61,18 @@ namespace Controllers
 
         private void Update()
         {
-            if (IsHoldingRightClick)
+            if (IsHoldingRightClick) // Right click takes precedence
             {
                 Vector2 rotationInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
                 RotateAroundPivot(rotationInput);
-                return;
             }
-
-            if (AngularVelocity.magnitude > 0)
+            else if (IsHoldingMiddleClick)
+            {
+                Vector2 panInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
+                transform.position += transform.right * (-panInput.x * PanSpeed);
+                transform.position += transform.up * (-panInput.y * PanSpeed);
+            }
+            else if (AngularVelocity.magnitude > 0)
             {
                 RotateAroundPivot(AngularVelocity);
                 AngularVelocity =
