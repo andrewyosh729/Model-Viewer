@@ -5,19 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/ModelMaterial.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/ModelMaterial.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/BlinnPhong.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/BlinnPhong.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/DefaultVolumeProfile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/DefaultVolumeProfile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/URP.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/URP.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/URP_Renderer.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/URP_Renderer.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/URP/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Startup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Startup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_Renderer.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_Renderer.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="5-implement-camera-panning-with-middle-mouse" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -53,21 +75,28 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/93/bfcf9b6f/Face.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/9a/d6e34d21/Group.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scenes/Main.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/BlinnPhong.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/Macros.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/SpaceTransforms.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@19ee6e1cc8be/Runtime/Unity/LifetimeScope.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Packages/manifest.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -85,7 +114,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "7-users-would-like-the-capability-to-import-3d-models-to-view",
+    "git-widget-placeholder": "3-implement-first-lighting-method",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -136,15 +165,13 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2044">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="2044" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -164,6 +191,7 @@
       <option name="presentableId" value="Default" />
       <updated>1760405980254</updated>
       <workItem from="1760405983752" duration="11118000" />
+      <workItem from="1760569531669" duration="4851000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -245,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760498937716</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="model importing">
+      <option name="closed" value="true" />
+      <created>1760504371389</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760504371389</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +350,8 @@
     <MESSAGE value="f" />
     <MESSAGE value="boop" />
     <MESSAGE value="more package shenanigans" />
-    <option name="LAST_COMMIT_MESSAGE" value="more package shenanigans" />
+    <MESSAGE value="model importing" />
+    <option name="LAST_COMMIT_MESSAGE" value="model importing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

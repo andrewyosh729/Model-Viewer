@@ -1,4 +1,5 @@
 using Dummiesman;
+using UnityEngine;
 
 namespace Services
 {
@@ -7,14 +8,14 @@ namespace Services
     {
         private OBJLoader ObjLoader { get; } = new OBJLoader();
 
-        public void ImportModel(string path)
+        public GameObject ImportModel(string path)
         {
-            ObjLoader.Load(path);
+            return ObjLoader.Load(path);
         }
     }
 
     public interface IModelImportService
     {
-        void ImportModel(string path);
+        GameObject ImportModel(string path);
     }
 }
