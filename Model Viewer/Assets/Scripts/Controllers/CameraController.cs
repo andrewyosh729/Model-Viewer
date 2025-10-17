@@ -14,6 +14,7 @@ namespace Controllers
         private Vector2 DampVelocity = Vector2.zero;
         [SerializeField] private float VelocityFalloff = 3f;
         [SerializeField] private float PanSpeed = 0.01f;
+        [SerializeField] private float ZoomSpeed = 1f;
 
 
         private void Awake()
@@ -77,6 +78,18 @@ namespace Controllers
                 RotateAroundPivot(AngularVelocity);
                 AngularVelocity =
                     Vector2.SmoothDamp(AngularVelocity, Vector2.zero, ref DampVelocity, 1f / VelocityFalloff);
+            }
+
+            if (Controls.Zoom.Scroll.inProgress)
+            {
+                transform.position += transform.forward * Controls.Zoom.Scroll.ReadValue<Vector2>().y * ZoomSpeed;
+            }
+
+            if (Controls.Recenter.Space.inProgress)
+            {
+                AngularVelocity = Vector2.zero;
+                transform.position = new Vector3(0f, 0f, -10f);
+                transform.rotation = Quaternion.identity;
             }
         }
 

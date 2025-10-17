@@ -199,6 +199,34 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Recenter"",
+            ""id"": ""1d4d227c-5031-4365-a327-43c5427dfe5b"",
+            ""actions"": [
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b5d75a7-3454-4bd3-b707-f40255e8e96a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cc9ab9b9-53b9-4207-8e4c-4c261bd05c1e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -215,6 +243,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         // Pan
         m_Pan = asset.FindActionMap("Pan", throwIfNotFound: true);
         m_Pan_MiddleClick = m_Pan.FindAction("Middle Click", throwIfNotFound: true);
+        // Recenter
+        m_Recenter = asset.FindActionMap("Recenter", throwIfNotFound: true);
+        m_Recenter_Space = m_Recenter.FindAction("Space", throwIfNotFound: true);
     }
 
     ~@CameraControls()
@@ -223,6 +254,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Orbit.enabled, "This will cause a leak and performance issues, CameraControls.Orbit.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Zoom.enabled, "This will cause a leak and performance issues, CameraControls.Zoom.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Pan.enabled, "This will cause a leak and performance issues, CameraControls.Pan.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Recenter.enabled, "This will cause a leak and performance issues, CameraControls.Recenter.Disable() has not been called.");
     }
 
     /// <summary>
@@ -678,6 +710,102 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PanActions" /> instance referencing this action map.
     /// </summary>
     public PanActions @Pan => new PanActions(this);
+
+    // Recenter
+    private readonly InputActionMap m_Recenter;
+    private List<IRecenterActions> m_RecenterActionsCallbackInterfaces = new List<IRecenterActions>();
+    private readonly InputAction m_Recenter_Space;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Recenter".
+    /// </summary>
+    public struct RecenterActions
+    {
+        private @CameraControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RecenterActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Recenter/Space".
+        /// </summary>
+        public InputAction @Space => m_Wrapper.m_Recenter_Space;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Recenter; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RecenterActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RecenterActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RecenterActions" />
+        public void AddCallbacks(IRecenterActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RecenterActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RecenterActionsCallbackInterfaces.Add(instance);
+            @Space.started += instance.OnSpace;
+            @Space.performed += instance.OnSpace;
+            @Space.canceled += instance.OnSpace;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RecenterActions" />
+        private void UnregisterCallbacks(IRecenterActions instance)
+        {
+            @Space.started -= instance.OnSpace;
+            @Space.performed -= instance.OnSpace;
+            @Space.canceled -= instance.OnSpace;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RecenterActions.UnregisterCallbacks(IRecenterActions)" />.
+        /// </summary>
+        /// <seealso cref="RecenterActions.UnregisterCallbacks(IRecenterActions)" />
+        public void RemoveCallbacks(IRecenterActions instance)
+        {
+            if (m_Wrapper.m_RecenterActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RecenterActions.AddCallbacks(IRecenterActions)" />
+        /// <seealso cref="RecenterActions.RemoveCallbacks(IRecenterActions)" />
+        /// <seealso cref="RecenterActions.UnregisterCallbacks(IRecenterActions)" />
+        public void SetCallbacks(IRecenterActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RecenterActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RecenterActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RecenterActions" /> instance referencing this action map.
+    /// </summary>
+    public RecenterActions @Recenter => new RecenterActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Look" which allows adding and removing callbacks.
     /// </summary>
@@ -737,5 +865,20 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMiddleClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Recenter" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RecenterActions.AddCallbacks(IRecenterActions)" />
+    /// <seealso cref="RecenterActions.RemoveCallbacks(IRecenterActions)" />
+    public interface IRecenterActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Space" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpace(InputAction.CallbackContext context);
     }
 }
