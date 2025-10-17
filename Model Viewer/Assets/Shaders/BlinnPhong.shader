@@ -64,24 +64,31 @@ Shader "Custom/BlinnPhong"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                Light light = GetMainLight(float4(IN.worldPos, 1.0));
-                float3 normal = normalize(IN.normalWS);
-                float3 lightDirection = normalize(light.direction);
-                float lambertian = max(dot(lightDirection, normal), 0.0);
-                float specular = 0.0;
+                float3 color = _AmbientColor;
+                int additionalLightCount = GetAdditionalLightsCount();
 
-                if (lambertian > 0.0)
+                for (int i = 0; i < additionalLightCount; ++i)
                 {
-                    // blinn phong
-                    float3 viewDirection = normalize(IN.viewDirWS);
-                    float3 halfDirection = normalize(lightDirection + viewDirection);
-                    float specularAngle = max(dot(halfDirection, normal), 0.0);
-                    specular = pow(specularAngle, _Shininess);
+                    Light light = GetAdditionalLight(i, float4(IN.worldPos, 1.0));
+                    float3 normal = normalize(IN.normalWS);
+                    float3 lightDirection = normalize(light.direction);
+                    float lambertian = max(dot(lightDirection, normal), 0.0);
+                    float specular = 0.0;
+
+                    if (lambertian > 0.0)
+                    {
+                        // blinn phong
+                        float3 viewDirection = normalize(IN.viewDirWS);
+                        float3 halfDirection = normalize(lightDirection + viewDirection);
+                        float specularAngle = max(dot(halfDirection, normal), 0.0);
+                        specular = pow(specularAngle, _Shininess);
+                    }
+                    color += _DiffuseColor * lambertian * light.color * light.distanceAttenuation + _SpecularColor *
+                        specular * light.color * light.distanceAttenuation;
                 }
 
-                return float4(
-                    _AmbientColor + _DiffuseColor * lambertian * light.color * light.distanceAttenuation + _SpecularColor *
-                    specular * light.color * light.distanceAttenuation, 1.0);
+
+                return float4(color, 0.0);
             }
             ENDHLSL
         }
