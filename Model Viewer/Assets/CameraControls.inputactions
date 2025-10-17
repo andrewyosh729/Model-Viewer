@@ -113,6 +113,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Recenter",
+            "id": "1d4d227c-5031-4365-a327-43c5427dfe5b",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "0b5d75a7-3454-4bd3-b707-f40255e8e96a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc9ab9b9-53b9-4207-8e4c-4c261bd05c1e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
