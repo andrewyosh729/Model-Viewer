@@ -41,7 +41,7 @@ namespace Controllers
         private void RightClickStarted(InputAction.CallbackContext _)
         {
             IsHoldingRightClick = true;
-            Pivot = transform.position + transform.forward * 10;
+            Pivot = Vector3.zero;
         }
 
         private void RightClickCanceled(InputAction.CallbackContext _)

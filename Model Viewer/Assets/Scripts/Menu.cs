@@ -7,7 +7,6 @@ public class Menu : MonoBehaviour
 {
     [Inject] private IModelImportService ModelImportService { get; set; }
 
-    [SerializeField] private Material ModelMaterial;
 
     private void OnGUI()
     {
@@ -16,9 +15,7 @@ public class Menu : MonoBehaviour
         {
             if (FileDialogUtils.TryOpenFile(out string path))
             {
-                GameObject importedModel = ModelImportService.ImportModel(path);
-                importedModel.transform.GetChild(0).GetComponent<MeshRenderer>().material =
-                    ModelMaterial; // with the importer i'm using the mesh is the first child of the imported model
+                ModelImportService.ImportModel(path);
             }
         }
     }
