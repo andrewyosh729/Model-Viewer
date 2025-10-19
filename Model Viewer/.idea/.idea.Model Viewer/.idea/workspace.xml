@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoType.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +156,7 @@
       <workItem from="1760752376304" duration="4134000" />
       <workItem from="1760806967661" duration="10717000" />
       <workItem from="1760832850485" duration="9663000" />
-      <workItem from="1760894299732" duration="3371000" />
+      <workItem from="1760894299732" duration="5155000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -290,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760844559463</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="resize based on camera fov and distance to target">
+      <option name="closed" value="true" />
+      <created>1760897929029</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760897929029</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +369,8 @@
     <MESSAGE value="update to use assimp now" />
     <MESSAGE value="scene configuration and rotation controls" />
     <MESSAGE value="Scale gizmo wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scale gizmo wip" />
+    <MESSAGE value="resize based on camera fov and distance to target" />
+    <option name="LAST_COMMIT_MESSAGE" value="resize based on camera fov and distance to target" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

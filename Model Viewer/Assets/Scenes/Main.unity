@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   VelocityFalloff: 4
   PanSpeed: 0.1
-  ZoomSpeed: 10
+  ZoomSpeed: 5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

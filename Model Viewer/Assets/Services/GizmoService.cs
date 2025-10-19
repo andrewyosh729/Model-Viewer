@@ -64,23 +64,21 @@ public class GizmoService : MonoBehaviour
 
     private void Update()
     {
-        MaintainScale();
+        if (ActiveGizmo)
+        {
+            transform.localScale = CalculateNewScale();
+        }
     }
 
-    private void MaintainScale()
+    private Vector3 CalculateNewScale()
     {
-        if (!ActiveGizmo)
-        {
-            return;
-        }
-
         Camera camera = Camera.main;
         float distance = Vector3.Distance(camera.transform.position, ActiveGizmo.Target.position);
         float fov = camera.fieldOfView * Mathf.Deg2Rad;
-        float screenFraction = 0.05f;
+        float screenFraction = 0.1f;
 
         float scale = distance * Mathf.Tan(fov * 0.5f) * screenFraction;
-        transform.localScale = Vector3.one * scale;
+        return Vector3.one * scale;
     }
 
     private void MouseDown(InputAction.CallbackContext obj)
