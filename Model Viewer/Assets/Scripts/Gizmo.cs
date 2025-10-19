@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Gizmo : MonoBehaviour
+public abstract class Gizmo : MonoBehaviour
 {
     [SerializeField] protected List<GizmoHandle> GizmoHandles;
 
@@ -12,18 +12,11 @@ public class Gizmo : MonoBehaviour
     public Transform Target
     {
         get => m_Target;
-        set
-        {
-            m_Target = value;
-            foreach (GizmoHandle resizeHandle in GizmoHandles)
-            {
-                resizeHandle.transform.localScale = m_Target.localScale;
-            }
-        }
+        set => m_Target = value;
     }
 
-    public GizmoType Type => GizmoType.Scale;
-    
+    public abstract GizmoType Type { get; }
+
 
     private void Update()
     {

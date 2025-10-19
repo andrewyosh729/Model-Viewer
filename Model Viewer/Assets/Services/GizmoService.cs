@@ -5,14 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
 
-public enum GizmoType
-{
-    None,
-    Position,
-    Rotation,
-    Scale
-}
-
 
 public class GizmoService : MonoBehaviour
 {
@@ -23,6 +15,24 @@ public class GizmoService : MonoBehaviour
     private Gizmo ActiveGizmo { get; set; }
     private Ray MouseRay => Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
+
+    private Transform SelectedObject
+    {
+        set
+        {
+            m_selectedObject = value;
+            SetAllGizmosInactive();
+
+            // unselected
+            if (m_selectedObject == null)
+            {
+                ActiveGizmo = null;
+                return;
+            }
+
+            ActivateGizmo(ActiveGizmoType, m_selectedObject);
+        }
+    }
 
     private void SetAllGizmosInactive()
     {
@@ -45,23 +55,6 @@ public class GizmoService : MonoBehaviour
         }
     }
 
-    private Transform SelectedObject
-    {
-        set
-        {
-            m_selectedObject = value;
-            SetAllGizmosInactive();
-
-            // unselected
-            if (m_selectedObject == null)
-            {
-                ActiveGizmo = null;
-                return;
-            }
-
-            ActivateGizmo(ActiveGizmoType, m_selectedObject);
-        }
-    }
 
     private void Start()
     {
@@ -69,9 +62,29 @@ public class GizmoService : MonoBehaviour
         InputService.CameraControls.Select.MouseClick.canceled += MouseUp;
     }
 
+    private void Update()
+    {
+        MaintainScale();
+    }
+
+    private void MaintainScale()
+    {
+        if (!ActiveGizmo)
+        {
+            return;
+        }
+
+        Camera camera = Camera.main;
+        float distance = Vector3.Distance(camera.transform.position, ActiveGizmo.Target.position);
+        float fov = camera.fieldOfView * Mathf.Deg2Rad;
+        float screenFraction = 0.05f;
+
+        float scale = distance * Mathf.Tan(fov * 0.5f) * screenFraction;
+        transform.localScale = Vector3.one * scale;
+    }
+
     private void MouseDown(InputAction.CallbackContext obj)
     {
-        
         if (Physics.Raycast(MouseRay, out RaycastHit gizmoHit, float.MaxValue, 1 << LayerMask.NameToLayer("Gizmo")))
         {
             if (gizmoHit.transform.TryGetComponent(out GizmoHandle gizmoHandle))
@@ -90,7 +103,7 @@ public class GizmoService : MonoBehaviour
                 return;
             }
 
-   
+
             SelectedObject = Physics.Raycast(MouseRay, out RaycastHit hit, float.MaxValue,
                 1 << LayerMask.NameToLayer("Default"))
                 ? hit.transform

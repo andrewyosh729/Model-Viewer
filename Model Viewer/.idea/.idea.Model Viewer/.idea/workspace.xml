@@ -5,42 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/XAxisMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/XAxisMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/YAxisMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/YAxisMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/ScaleGizmo.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/ScaleGizmo.obj.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Resize Handle.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Resize Handle.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Axis.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Axis.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GizmoHandle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GizmoHandle.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/UnlitAlwaysRender.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/UnlitAlwaysRender.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Services/GizmoType.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScaleGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="12-users-would-like-to-zoom-in-and-out" />
+        <entry key="$PROJECT_DIR$/.." value="18-integrate-with-assimp" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -80,14 +51,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.inputactions" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -115,7 +78,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;18-integrate-with-assimp&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;22-scale-gizmo&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -196,7 +159,8 @@
       <workItem from="1760669150642" duration="1007000" />
       <workItem from="1760752376304" duration="4134000" />
       <workItem from="1760806967661" duration="10717000" />
-      <workItem from="1760832850485" duration="8927000" />
+      <workItem from="1760832850485" duration="9663000" />
+      <workItem from="1760894299732" duration="3371000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -318,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760755586191</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Scale gizmo wip">
+      <option name="closed" value="true" />
+      <created>1760844559463</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1760844559463</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +364,8 @@
     <MESSAGE value="add zoom and recenter logic" />
     <MESSAGE value="update to use assimp now" />
     <MESSAGE value="scene configuration and rotation controls" />
-    <option name="LAST_COMMIT_MESSAGE" value="scene configuration and rotation controls" />
+    <MESSAGE value="Scale gizmo wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scale gizmo wip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

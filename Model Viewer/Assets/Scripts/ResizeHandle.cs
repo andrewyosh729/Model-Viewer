@@ -10,12 +10,14 @@ public class ResizeHandle : GizmoHandle
 
     private Vector3 ResizeDirection => transform.up.normalized;
     private Vector3 InitialTargetScale { get; set; }
+    private Vector3 InitialHandleLossyScale { get; set; }
 
 
     protected override void OnBeginInteraction()
     {
         base.OnBeginInteraction();
         InitialTargetScale = Gizmo.Target.localScale;
+        InitialHandleLossyScale = transform.lossyScale;
     }
 
     public override void UpdateHandle()
@@ -32,22 +34,21 @@ public class ResizeHandle : GizmoHandle
             Vector3 hit = ray.GetPoint(distance);
             Vector3 dragVector = hit - transform.position;
 
-
             float newScale = Vector3.Dot(dragVector, ResizeDirection);
             newScale /= 2; // Unity scales symmetrically around pivot — divide by 2 to match one-sided drag
             Vector3 resizeTargetScale = Vector3.one;
             Vector3 resizeHandleScale = transform.localScale;
-            resizeHandleScale.y = newScale;
+            resizeHandleScale.y = newScale * (resizeHandleScale.y / transform.lossyScale.y);
             switch (Axis)
             {
                 case Axis.X:
-                    resizeTargetScale.x = newScale;
+                    resizeTargetScale.x = newScale / InitialHandleLossyScale.x;
                     break;
                 case Axis.Y:
-                    resizeTargetScale.y = newScale;
+                    resizeTargetScale.y = newScale / InitialHandleLossyScale.y;
                     break;
                 case Axis.Z:
-                    resizeTargetScale.z = newScale;
+                    resizeTargetScale.z = newScale / InitialHandleLossyScale.z;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
