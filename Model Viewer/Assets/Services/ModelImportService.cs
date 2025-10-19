@@ -18,6 +18,7 @@ namespace Services
             GameObject parent = new GameObject(Path.GetFileName(path));
             foreach (Mesh assimpMesh in scene.Meshes)
             {
+                
                 GameObject gameObject = new GameObject("SubMesh");
                 gameObject.transform.SetParent(parent.transform);
                 MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
@@ -29,6 +30,7 @@ namespace Services
                 unityMesh.uv = assimpMesh.TextureCoordinateChannels[0].Select(v => new Vector2(v.X, v.Y)).ToArray();
                 unityMesh.triangles = assimpMesh.Faces.SelectMany(f => f.Indices.Take(3)).ToArray();
                 meshFilter.mesh = unityMesh;
+                gameObject.AddComponent<MeshCollider>().sharedMesh = unityMesh;
             }
         }
     }

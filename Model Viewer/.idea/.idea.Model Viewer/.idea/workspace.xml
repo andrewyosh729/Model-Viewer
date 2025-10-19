@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="15-add-capability-for-multiple-lights" />
+        <entry key="$PROJECT_DIR$/.." value="18-integrate-with-assimp" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -39,17 +39,17 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2d15428864f74f48b300fedf813e571529c00/60/9023f771/RaycastHit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/17/897f32fd/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/03/2bf889ef/LoadResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/93/bfcf9b6f/Face.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/9a/d6e34d21/Group.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.inputactions" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/CameraControls.inputactions" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Controllers/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -74,7 +74,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;12-users-would-like-to-zoom-in-and-out&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;22-scale-gizmo&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -153,7 +153,10 @@
       <workItem from="1760405983752" duration="11118000" />
       <workItem from="1760569531669" duration="5066000" />
       <workItem from="1760669150642" duration="1007000" />
-      <workItem from="1760752376304" duration="1788000" />
+      <workItem from="1760752376304" duration="4134000" />
+      <workItem from="1760806967661" duration="10717000" />
+      <workItem from="1760832850485" duration="9663000" />
+      <workItem from="1760894299732" duration="5155000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -259,7 +262,39 @@
       <option name="project" value="LOCAL" />
       <updated>1760673081605</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update to use assimp now">
+      <option name="closed" value="true" />
+      <created>1760755027944</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1760755027944</updated>
+    </task>
+    <task id="LOCAL-00015" summary="scene configuration and rotation controls">
+      <option name="closed" value="true" />
+      <created>1760755586191</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1760755586191</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Scale gizmo wip">
+      <option name="closed" value="true" />
+      <created>1760844559463</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1760844559463</updated>
+    </task>
+    <task id="LOCAL-00017" summary="resize based on camera fov and distance to target">
+      <option name="closed" value="true" />
+      <created>1760897929029</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760897929029</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +366,11 @@
     <MESSAGE value="model importing" />
     <MESSAGE value="added blinn phong lighting" />
     <MESSAGE value="add zoom and recenter logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="add zoom and recenter logic" />
+    <MESSAGE value="update to use assimp now" />
+    <MESSAGE value="scene configuration and rotation controls" />
+    <MESSAGE value="Scale gizmo wip" />
+    <MESSAGE value="resize based on camera fov and distance to target" />
+    <option name="LAST_COMMIT_MESSAGE" value="resize based on camera fov and distance to target" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

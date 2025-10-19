@@ -9,6 +9,7 @@ namespace Services
         {
             base.Configure(builder);
             builder.Register<ModelImportService>(Lifetime.Singleton).As<IModelImportService>();
+            builder.RegisterComponentInHierarchy<InputService>();
         }
     }
 }

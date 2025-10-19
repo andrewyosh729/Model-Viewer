@@ -1,75 +1,51 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using VContainer;
 
 namespace Controllers
 {
     public class CameraController : MonoBehaviour
     {
-        private CameraControls Controls { get; set; }
-        private bool IsHoldingRightClick { get; set; }
-        private bool IsHoldingMiddleClick { get; set; }
+        public bool IsHoldingRightClick => InputService.CameraControls.Orbit.RightClick.inProgress;
+        public bool IsHoldingMiddleClick => InputService.CameraControls.Pan.MiddleClick.inProgress;
+        public bool IsHoldingLeftClick => InputService.CameraControls.Select.MouseClick.inProgress;
         private Vector3 Pivot { get; set; }
         private Vector2 AngularVelocity { get; set; }
         private Vector2 DampVelocity = Vector2.zero;
         [SerializeField] private float VelocityFalloff = 3f;
         [SerializeField] private float PanSpeed = 0.01f;
         [SerializeField] private float ZoomSpeed = 1f;
+        [Inject] private InputService InputService { get; set; }
 
-
-        private void Awake()
+        private void Start()
         {
-            Controls = new CameraControls();
-            Controls.Orbit.RightClick.started += RightClickStarted;
-            Controls.Orbit.RightClick.canceled += RightClickCanceled;
-
-            Controls.Pan.MiddleClick.started += MiddleClickStarted;
-            Controls.Pan.MiddleClick.canceled += MiddleClickCanceled;
+            InputService.CameraControls.Orbit.RightClick.started += RightClickStarted;
+            InputService.CameraControls.Orbit.RightClick.canceled += RightClickCanceled;
         }
 
 
-        private void MiddleClickStarted(InputAction.CallbackContext obj)
-        {
-            IsHoldingMiddleClick = true;
-        }
-
-        private void MiddleClickCanceled(InputAction.CallbackContext obj)
-        {
-            IsHoldingMiddleClick = false;
-        }
 
         private void RightClickStarted(InputAction.CallbackContext _)
         {
-            IsHoldingRightClick = true;
             Pivot = Vector3.zero;
         }
 
         private void RightClickCanceled(InputAction.CallbackContext _)
         {
-            IsHoldingRightClick = false;
-            AngularVelocity = Controls.Look.MouseDelta.ReadValue<Vector2>();
-        }
-
-        private void OnEnable()
-        {
-            Controls.Enable();
-        }
-
-        private void OnDisable()
-        {
-            Controls.Disable();
+            AngularVelocity = InputService.CameraControls.Look.MouseDelta.ReadValue<Vector2>();
         }
 
         private void Update()
         {
             if (IsHoldingRightClick) // Right click takes precedence
             {
-                Vector2 rotationInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
+                Vector2 rotationInput = InputService.CameraControls.Look.MouseDelta.ReadValue<Vector2>();
                 RotateAroundPivot(rotationInput);
             }
             else if (IsHoldingMiddleClick)
             {
-                Vector2 panInput = Controls.Look.MouseDelta.ReadValue<Vector2>();
+                Vector2 panInput = InputService.CameraControls.Look.MouseDelta.ReadValue<Vector2>();
                 transform.position += transform.right * (-panInput.x * PanSpeed);
                 transform.position += transform.up * (-panInput.y * PanSpeed);
             }
@@ -80,12 +56,12 @@ namespace Controllers
                     Vector2.SmoothDamp(AngularVelocity, Vector2.zero, ref DampVelocity, 1f / VelocityFalloff);
             }
 
-            if (Controls.Zoom.Scroll.inProgress)
+            if (InputService.CameraControls.Zoom.Scroll.inProgress)
             {
-                transform.position += transform.forward * Controls.Zoom.Scroll.ReadValue<Vector2>().y * ZoomSpeed;
+                transform.position += transform.forward * InputService.CameraControls.Zoom.Scroll.ReadValue<Vector2>().y * ZoomSpeed;
             }
 
-            if (Controls.Recenter.Space.inProgress)
+            if (InputService.CameraControls.Recenter.Space.inProgress)
             {
                 AngularVelocity = Vector2.zero;
                 transform.position = new Vector3(0f, 0f, -10f);
