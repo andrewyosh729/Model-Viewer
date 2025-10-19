@@ -20,15 +20,11 @@ public class ResizeHandle : GizmoHandle
         InitialHandleLossyScale = transform.lossyScale;
     }
 
+    
     public override void UpdateHandle()
     {
-        Vector3 cameraOffset = Camera.main.transform.position - Gizmo.Target.position;
-        Vector3 handleAxis = transform.up;
-        Plane axisPlane = new Plane(handleAxis, Gizmo.Target.position);
-        Vector3 projectedOffset = axisPlane.ClosestPointOnPlane(cameraOffset);
-        Plane resizePlane = new Plane(projectedOffset, Gizmo.Target.position);
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Mouse.current.position.value.x,
-            Mouse.current.position.value.y, 0));
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Plane resizePlane = GetHandlePlane(ResizeDirection);
         if (resizePlane.Raycast(ray, out float distance))
         {
             Vector3 hit = ray.GetPoint(distance);

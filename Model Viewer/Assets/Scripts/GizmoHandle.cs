@@ -8,7 +8,7 @@ public abstract class GizmoHandle : MonoBehaviour
 
     private void Start()
     {
-        Gizmo = transform.GetComponentInParent<ScaleGizmo>();
+        Gizmo = transform.GetComponentInParent<Gizmo>();
     }
 
     public void BeginInteraction()
@@ -43,4 +43,14 @@ public abstract class GizmoHandle : MonoBehaviour
     }
 
     public abstract void UpdateHandle();
+
+    protected Plane GetHandlePlane(Vector3 axis)
+    {
+        Vector3 camForward = Camera.main.transform.forward;
+
+        // Generate a stable normal for the plane using cross product logic
+        Vector3 planeNormal = Vector3.Cross(Vector3.Cross(axis, camForward), axis).normalized;
+
+        return new Plane(planeNormal, transform.position);
+    }
 }
