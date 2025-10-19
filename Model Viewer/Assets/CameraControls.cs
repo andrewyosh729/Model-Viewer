@@ -227,6 +227,34 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Select"",
+            ""id"": ""3fb538ac-f96e-4012-94e6-36b204da284d"",
+            ""actions"": [
+                {
+                    ""name"": ""Mouse Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1800152-3ac6-48ef-a5dd-ace6dec85d33"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d8f48d55-92b3-49a0-91bf-63f0610b3edf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -246,6 +274,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         // Recenter
         m_Recenter = asset.FindActionMap("Recenter", throwIfNotFound: true);
         m_Recenter_Space = m_Recenter.FindAction("Space", throwIfNotFound: true);
+        // Select
+        m_Select = asset.FindActionMap("Select", throwIfNotFound: true);
+        m_Select_MouseClick = m_Select.FindAction("Mouse Click", throwIfNotFound: true);
     }
 
     ~@CameraControls()
@@ -255,6 +286,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Zoom.enabled, "This will cause a leak and performance issues, CameraControls.Zoom.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Pan.enabled, "This will cause a leak and performance issues, CameraControls.Pan.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Recenter.enabled, "This will cause a leak and performance issues, CameraControls.Recenter.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Select.enabled, "This will cause a leak and performance issues, CameraControls.Select.Disable() has not been called.");
     }
 
     /// <summary>
@@ -806,6 +838,102 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="RecenterActions" /> instance referencing this action map.
     /// </summary>
     public RecenterActions @Recenter => new RecenterActions(this);
+
+    // Select
+    private readonly InputActionMap m_Select;
+    private List<ISelectActions> m_SelectActionsCallbackInterfaces = new List<ISelectActions>();
+    private readonly InputAction m_Select_MouseClick;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Select".
+    /// </summary>
+    public struct SelectActions
+    {
+        private @CameraControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SelectActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Select/MouseClick".
+        /// </summary>
+        public InputAction @MouseClick => m_Wrapper.m_Select_MouseClick;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Select; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SelectActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SelectActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SelectActions" />
+        public void AddCallbacks(ISelectActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SelectActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SelectActionsCallbackInterfaces.Add(instance);
+            @MouseClick.started += instance.OnMouseClick;
+            @MouseClick.performed += instance.OnMouseClick;
+            @MouseClick.canceled += instance.OnMouseClick;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SelectActions" />
+        private void UnregisterCallbacks(ISelectActions instance)
+        {
+            @MouseClick.started -= instance.OnMouseClick;
+            @MouseClick.performed -= instance.OnMouseClick;
+            @MouseClick.canceled -= instance.OnMouseClick;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SelectActions.UnregisterCallbacks(ISelectActions)" />.
+        /// </summary>
+        /// <seealso cref="SelectActions.UnregisterCallbacks(ISelectActions)" />
+        public void RemoveCallbacks(ISelectActions instance)
+        {
+            if (m_Wrapper.m_SelectActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SelectActions.AddCallbacks(ISelectActions)" />
+        /// <seealso cref="SelectActions.RemoveCallbacks(ISelectActions)" />
+        /// <seealso cref="SelectActions.UnregisterCallbacks(ISelectActions)" />
+        public void SetCallbacks(ISelectActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SelectActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SelectActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SelectActions" /> instance referencing this action map.
+    /// </summary>
+    public SelectActions @Select => new SelectActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Look" which allows adding and removing callbacks.
     /// </summary>
@@ -880,5 +1008,20 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpace(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Select" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SelectActions.AddCallbacks(ISelectActions)" />
+    /// <seealso cref="SelectActions.RemoveCallbacks(ISelectActions)" />
+    public interface ISelectActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Mouse Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouseClick(InputAction.CallbackContext context);
     }
 }
