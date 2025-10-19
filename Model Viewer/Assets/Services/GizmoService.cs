@@ -11,6 +11,7 @@ public class GizmoService : MonoBehaviour
     [Inject] private InputService InputService { get; set; }
     [SerializeField] private GizmoType ActiveGizmoType = GizmoType.Scale;
     [SerializeField] private List<Gizmo> Gizmos;
+    private GizmoType PreviousActiveGizmoType { get; set; }
     private Transform m_selectedObject;
     private Gizmo ActiveGizmo { get; set; }
     private Ray MouseRay => Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -18,14 +19,15 @@ public class GizmoService : MonoBehaviour
 
     private Transform SelectedObject
     {
+        get => m_selectedObject;
         set
         {
             m_selectedObject = value;
-            SetAllGizmosInactive();
 
             // unselected
             if (m_selectedObject == null)
             {
+                SetAllGizmosInactive();
                 ActiveGizmo = null;
                 return;
             }
@@ -42,15 +44,16 @@ public class GizmoService : MonoBehaviour
         }
     }
 
-    private void ActivateGizmo(GizmoType gizmoType, Transform resizeTarget)
+    private void ActivateGizmo(GizmoType gizmoType, Transform gizmoTarget)
     {
+        SetAllGizmosInactive();
         Gizmo gizmo = Gizmos.FirstOrDefault(g => g.Type == gizmoType);
         if (gizmo != null)
         {
             gizmo.gameObject.SetActive(true);
             gizmo.transform.position = m_selectedObject.position;
             gizmo.transform.localRotation = Quaternion.identity;
-            gizmo.Target = resizeTarget;
+            gizmo.Target = gizmoTarget;
             ActiveGizmo = gizmo;
         }
     }
@@ -64,6 +67,12 @@ public class GizmoService : MonoBehaviour
 
     private void Update()
     {
+        if (ActiveGizmoType != PreviousActiveGizmoType && SelectedObject)
+        {
+            ActivateGizmo(ActiveGizmoType, SelectedObject);
+        }
+
+        PreviousActiveGizmoType = ActiveGizmoType;
         if (ActiveGizmo)
         {
             transform.localScale = CalculateNewScale();
