@@ -115,11 +115,26 @@ public class GizmoService : MonoBehaviour
                 return;
             }
 
+            if (Physics.Raycast(MouseRay, out RaycastHit hit, float.MaxValue,
+                    1 << LayerMask.NameToLayer("Default")))
+            {
+                Transform current = hit.transform;
+                while (true)
+                {
+                    if (!current.parent)
+                    {
+                        break;
+                    }
 
-            SelectedObject = Physics.Raycast(MouseRay, out RaycastHit hit, float.MaxValue,
-                1 << LayerMask.NameToLayer("Default"))
-                ? hit.transform
-                : null;
+                    current = current.parent;
+                }
+
+                SelectedObject = current;
+            }
+            else
+            {
+                SelectedObject = null;
+            }
         }
         finally
         {

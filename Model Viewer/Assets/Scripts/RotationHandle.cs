@@ -50,13 +50,9 @@ public class RotationHandle : GizmoHandle
             currentVector = Vector3.ProjectOnPlane(currentVector, rotationPlane.normal);
             float deltaAngle =
                 Vector3.SignedAngle(PreviousHitVector.normalized, currentVector.normalized, rotationAxis);
-            Debug.Log(deltaAngle);
             Gizmo.Target.rotation = Quaternion.AngleAxis(deltaAngle, rotationAxis) * Gizmo.Target.rotation;
 
             PreviousHitVector = currentVector;
-            Debug.DrawRay(transform.position, rotationAxis * 2f, Color.blue); // Rotation axis
-            Debug.DrawRay(transform.position, PreviousHitVector * 2f, Color.red); // Previous vector
-            Debug.DrawRay(transform.position, currentVector * 2f, Color.green); // Current vector        }
         }
     }
 
