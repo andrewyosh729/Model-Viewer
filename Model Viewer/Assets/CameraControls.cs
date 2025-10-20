@@ -255,6 +255,34 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Gizmo"",
+            ""id"": ""ba10b028-e9bf-43cb-a3b7-8388ac883aa0"",
+            ""actions"": [
+                {
+                    ""name"": ""GKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bcf4248-5b37-4947-a09e-8f520be1a5a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2e2fbbd7-b06a-4a63-a1c4-d5fed20c4427"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -277,6 +305,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         // Select
         m_Select = asset.FindActionMap("Select", throwIfNotFound: true);
         m_Select_MouseClick = m_Select.FindAction("Mouse Click", throwIfNotFound: true);
+        // Gizmo
+        m_Gizmo = asset.FindActionMap("Gizmo", throwIfNotFound: true);
+        m_Gizmo_GKey = m_Gizmo.FindAction("GKey", throwIfNotFound: true);
     }
 
     ~@CameraControls()
@@ -287,6 +318,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Pan.enabled, "This will cause a leak and performance issues, CameraControls.Pan.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Recenter.enabled, "This will cause a leak and performance issues, CameraControls.Recenter.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Select.enabled, "This will cause a leak and performance issues, CameraControls.Select.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gizmo.enabled, "This will cause a leak and performance issues, CameraControls.Gizmo.Disable() has not been called.");
     }
 
     /// <summary>
@@ -934,6 +966,102 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="SelectActions" /> instance referencing this action map.
     /// </summary>
     public SelectActions @Select => new SelectActions(this);
+
+    // Gizmo
+    private readonly InputActionMap m_Gizmo;
+    private List<IGizmoActions> m_GizmoActionsCallbackInterfaces = new List<IGizmoActions>();
+    private readonly InputAction m_Gizmo_GKey;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Gizmo".
+    /// </summary>
+    public struct GizmoActions
+    {
+        private @CameraControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public GizmoActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Gizmo/GKey".
+        /// </summary>
+        public InputAction @GKey => m_Wrapper.m_Gizmo_GKey;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Gizmo; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="GizmoActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(GizmoActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="GizmoActions" />
+        public void AddCallbacks(IGizmoActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GizmoActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GizmoActionsCallbackInterfaces.Add(instance);
+            @GKey.started += instance.OnGKey;
+            @GKey.performed += instance.OnGKey;
+            @GKey.canceled += instance.OnGKey;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="GizmoActions" />
+        private void UnregisterCallbacks(IGizmoActions instance)
+        {
+            @GKey.started -= instance.OnGKey;
+            @GKey.performed -= instance.OnGKey;
+            @GKey.canceled -= instance.OnGKey;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GizmoActions.UnregisterCallbacks(IGizmoActions)" />.
+        /// </summary>
+        /// <seealso cref="GizmoActions.UnregisterCallbacks(IGizmoActions)" />
+        public void RemoveCallbacks(IGizmoActions instance)
+        {
+            if (m_Wrapper.m_GizmoActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="GizmoActions.AddCallbacks(IGizmoActions)" />
+        /// <seealso cref="GizmoActions.RemoveCallbacks(IGizmoActions)" />
+        /// <seealso cref="GizmoActions.UnregisterCallbacks(IGizmoActions)" />
+        public void SetCallbacks(IGizmoActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GizmoActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GizmoActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="GizmoActions" /> instance referencing this action map.
+    /// </summary>
+    public GizmoActions @Gizmo => new GizmoActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Look" which allows adding and removing callbacks.
     /// </summary>
@@ -1023,5 +1151,20 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gizmo" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="GizmoActions.AddCallbacks(IGizmoActions)" />
+    /// <seealso cref="GizmoActions.RemoveCallbacks(IGizmoActions)" />
+    public interface IGizmoActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "GKey" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGKey(InputAction.CallbackContext context);
     }
 }

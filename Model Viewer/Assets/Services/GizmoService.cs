@@ -67,6 +67,11 @@ public class GizmoService : MonoBehaviour
 
     private void Update()
     {
+        if (InputService.CameraControls.Gizmo.GKey.triggered)
+        {
+            ActiveGizmoType = (GizmoType)(((int)ActiveGizmoType + 1) % Enum.GetValues(typeof(GizmoType)).Length);
+        }
+        
         if (ActiveGizmoType != PreviousActiveGizmoType && SelectedObject)
         {
             ActivateGizmo(ActiveGizmoType, SelectedObject);

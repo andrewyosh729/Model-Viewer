@@ -33,25 +33,8 @@ public class TranslationHandle : GizmoHandle
         {
             Vector3 hit = ray.GetPoint(distance);
             Vector3 dragVector = hit - PreviousHitPosition.Value;
-
             float translationDelta = Vector3.Dot(dragVector, TranslationDirection);
-            Vector3 translationTargetPosition = Gizmo.Target.position;
-            switch (Axis)
-            {
-                case Axis.X:
-                    translationTargetPosition.x += translationDelta;
-                    break;
-                case Axis.Y:
-                    translationTargetPosition.y += translationDelta;
-                    break;
-                case Axis.Z:
-                    translationTargetPosition.z -= translationDelta;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            Gizmo.Target.position = translationTargetPosition;
+            Gizmo.Target.Translate(TranslationDirection * translationDelta, Space.World);
             PreviousHitPosition = hit;
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public abstract class Gizmo : MonoBehaviour
@@ -7,13 +6,8 @@ public abstract class Gizmo : MonoBehaviour
     [SerializeField] protected List<GizmoHandle> GizmoHandles;
 
     public IReadOnlyList<GizmoHandle> Handles => GizmoHandles;
-    private Transform m_Target;
 
-    public Transform Target
-    {
-        get => m_Target;
-        set => m_Target = value;
-    }
+    public Transform Target { get; set; }
 
     public abstract GizmoType Type { get; }
 
@@ -22,8 +16,13 @@ public abstract class Gizmo : MonoBehaviour
     {
         if (Target)
         {
-            transform.position = Target.position;
-            transform.rotation = Target.rotation;
+            UpdateTransform();
         }
+    }
+
+    private void UpdateTransform()
+    {
+        transform.position = Target.position;
+        transform.rotation = Target.rotation;
     }
 }
