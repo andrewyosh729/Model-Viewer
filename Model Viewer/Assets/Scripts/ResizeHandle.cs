@@ -11,7 +11,12 @@ public class ResizeHandle : GizmoHandle
     private Vector3 ResizeDirection => transform.up.normalized;
     private Vector3 InitialTargetScale { get; set; }
     private Vector3 InitialHandleLossyScale { get; set; }
+    private Vector3 InitialHandleLocalScale { get; set; }
 
+    private void Awake()
+    {
+        InitialHandleLocalScale = transform.localScale;
+    }
 
     protected override void OnBeginInteraction()
     {
@@ -38,13 +43,13 @@ public class ResizeHandle : GizmoHandle
             switch (Axis)
             {
                 case Axis.X:
-                    resizeTargetScale.x = newScale / InitialHandleLossyScale.x;
+                    resizeTargetScale.x = newScale / InitialHandleLossyScale.y;
                     break;
                 case Axis.Y:
                     resizeTargetScale.y = newScale / InitialHandleLossyScale.y;
                     break;
                 case Axis.Z:
-                    resizeTargetScale.z = newScale / InitialHandleLossyScale.z;
+                    resizeTargetScale.z = newScale / InitialHandleLossyScale.y;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -59,6 +64,6 @@ public class ResizeHandle : GizmoHandle
     protected override void OnEndInteraction()
     {
         base.OnEndInteraction();
-        transform.localScale = Vector3.one;
+        transform.localScale = InitialHandleLocalScale;
     }
 }

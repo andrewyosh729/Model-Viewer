@@ -44,7 +44,7 @@ public abstract class GizmoHandle : MonoBehaviour
 
     public abstract void UpdateHandle();
 
-    protected Plane GetHandlePlane(Vector3 axis)
+    protected virtual Plane GetHandlePlane(Vector3 axis)
     {
         Vector3 camForward = Camera.main.transform.forward;
 
