@@ -83,12 +83,11 @@ Shader "Custom/BlinnPhong"
                         float specularAngle = max(dot(halfDirection, normal), 0.0);
                         specular = pow(specularAngle, _Shininess);
                     }
-                    color += _DiffuseColor * lambertian * light.color * light.distanceAttenuation + _SpecularColor *
-                        specular * light.color * light.distanceAttenuation;
+                    color += light.color * light.distanceAttenuation * (_DiffuseColor * lambertian + _SpecularColor * specular);
                 }
 
 
-                return float4(color, 0.0);
+                return float4(color, 1.0);
             }
             ENDHLSL
         }
