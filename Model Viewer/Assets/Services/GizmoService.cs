@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using VContainer;
 
@@ -9,7 +10,7 @@ using VContainer;
 public class GizmoService : MonoBehaviour
 {
     [Inject] private InputService InputService { get; set; }
-    [SerializeField] private GizmoType ActiveGizmoType = GizmoType.Scale;
+    [SerializeField] public GizmoType ActiveGizmoType = GizmoType.Scale;
     [SerializeField] private List<Gizmo> Gizmos;
     private GizmoType PreviousActiveGizmoType { get; set; }
     private Transform m_selectedObject;
@@ -32,7 +33,7 @@ public class GizmoService : MonoBehaviour
                 return;
             }
 
-            ActivateGizmo(ActiveGizmoType, m_selectedObject);
+            ActivateGizmo(ActiveGizmoType);
         }
     }
 
@@ -44,16 +45,23 @@ public class GizmoService : MonoBehaviour
         }
     }
 
-    private void ActivateGizmo(GizmoType gizmoType, Transform gizmoTarget)
+    public void ActivateGizmo(GizmoType gizmoType)
     {
+        ActiveGizmoType = gizmoType;
+
+        if (!SelectedObject)
+        {
+            return;
+        }
+
         SetAllGizmosInactive();
         Gizmo gizmo = Gizmos.FirstOrDefault(g => g.Type == gizmoType);
         if (gizmo != null)
         {
             gizmo.gameObject.SetActive(true);
-            gizmo.transform.position = m_selectedObject.position;
+            gizmo.transform.position = SelectedObject.position;
             gizmo.transform.localRotation = Quaternion.identity;
-            gizmo.Target = gizmoTarget;
+            gizmo.Target = SelectedObject;
             ActiveGizmo = gizmo;
         }
     }
@@ -67,14 +75,9 @@ public class GizmoService : MonoBehaviour
 
     private void Update()
     {
-        if (InputService.CameraControls.Gizmo.GKey.triggered)
-        {
-            ActiveGizmoType = (GizmoType)(((int)ActiveGizmoType + 1) % Enum.GetValues(typeof(GizmoType)).Length);
-        }
-        
         if (ActiveGizmoType != PreviousActiveGizmoType && SelectedObject)
         {
-            ActivateGizmo(ActiveGizmoType, SelectedObject);
+            ActivateGizmo(ActiveGizmoType);
         }
 
         PreviousActiveGizmoType = ActiveGizmoType;
@@ -108,7 +111,14 @@ public class GizmoService : MonoBehaviour
 
     private void MouseUp(InputAction.CallbackContext obj)
     {
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject(Mouse.current.deviceId))
+        {
+            return;
+        }
+
         try
+
         {
             if (ActiveGizmo != null && ActiveGizmo.Handles.Any(h => h.IsInteracting))
             {
