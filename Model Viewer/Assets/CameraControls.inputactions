@@ -169,62 +169,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "Gizmo",
-            "id": "ba10b028-e9bf-43cb-a3b7-8388ac883aa0",
-            "actions": [
-                {
-                    "name": "GKey",
-                    "type": "Button",
-                    "id": "3bcf4248-5b37-4947-a09e-8f520be1a5a7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "2e2fbbd7-b06a-4a63-a1c4-d5fed20c4427",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GKey",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "AddLight",
-            "id": "b3548e67-ff10-41ff-b36b-8b1c84ab96a5",
-            "actions": [
-                {
-                    "name": "LKey",
-                    "type": "Button",
-                    "id": "e8424793-29be-4fae-a1c4-04b358a0d5f2",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "2c476bd1-f912-4a28-82f0-1437c3da3116",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LKey",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": []

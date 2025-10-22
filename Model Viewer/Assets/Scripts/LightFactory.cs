@@ -6,14 +6,10 @@ public class LightFactory : MonoBehaviour
     [Inject] private InputService InputService { get; set; }
     [SerializeField] private GameObject LightPrefab;
 
-
-    private void Update()
+    public void CreateLight()
     {
-        if (InputService.CameraControls.AddLight.LKey.triggered)
-        {
-            Camera camera = Camera.main;
-            Instantiate(LightPrefab, camera.transform.position + camera.transform.forward * 5,
-                Quaternion.identity);
-        }
+        Camera camera = Camera.main;
+        Instantiate(LightPrefab, camera.transform.position + camera.transform.forward * 5,
+            Quaternion.identity);
     }
 }
