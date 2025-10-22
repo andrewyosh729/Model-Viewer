@@ -14,7 +14,7 @@ namespace Services
         {
             AssimpContext context = new AssimpContext();
             Scene scene = context.ImportFile(path,
-                PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals | PostProcessSteps.FlipUVs);
+                PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
             GameObject parent = new GameObject(Path.GetFileName(path));
             foreach (Mesh assimpMesh in scene.Meshes)
             {
@@ -23,7 +23,7 @@ namespace Services
                 gameObject.transform.SetParent(parent.transform);
                 MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
                 MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
-                meshRenderer.material = new Material(Shader.Find("Custom/BlinnPhong"));
+                meshRenderer.material = new Material(Shader.Find("Custom/PBR"));
                 UnityEngine.Mesh unityMesh = new UnityEngine.Mesh();
                 unityMesh.vertices = assimpMesh.Vertices.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray();
                 unityMesh.normals = assimpMesh.Normals.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray();

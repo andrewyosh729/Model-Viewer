@@ -283,6 +283,34 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""AddLight"",
+            ""id"": ""b3548e67-ff10-41ff-b36b-8b1c84ab96a5"",
+            ""actions"": [
+                {
+                    ""name"": ""LKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8424793-29be-4fae-a1c4-04b358a0d5f2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2c476bd1-f912-4a28-82f0-1437c3da3116"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -308,6 +336,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         // Gizmo
         m_Gizmo = asset.FindActionMap("Gizmo", throwIfNotFound: true);
         m_Gizmo_GKey = m_Gizmo.FindAction("GKey", throwIfNotFound: true);
+        // AddLight
+        m_AddLight = asset.FindActionMap("AddLight", throwIfNotFound: true);
+        m_AddLight_LKey = m_AddLight.FindAction("LKey", throwIfNotFound: true);
     }
 
     ~@CameraControls()
@@ -319,6 +350,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Recenter.enabled, "This will cause a leak and performance issues, CameraControls.Recenter.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Select.enabled, "This will cause a leak and performance issues, CameraControls.Select.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Gizmo.enabled, "This will cause a leak and performance issues, CameraControls.Gizmo.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_AddLight.enabled, "This will cause a leak and performance issues, CameraControls.AddLight.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1062,6 +1094,102 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="GizmoActions" /> instance referencing this action map.
     /// </summary>
     public GizmoActions @Gizmo => new GizmoActions(this);
+
+    // AddLight
+    private readonly InputActionMap m_AddLight;
+    private List<IAddLightActions> m_AddLightActionsCallbackInterfaces = new List<IAddLightActions>();
+    private readonly InputAction m_AddLight_LKey;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "AddLight".
+    /// </summary>
+    public struct AddLightActions
+    {
+        private @CameraControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public AddLightActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "AddLight/LKey".
+        /// </summary>
+        public InputAction @LKey => m_Wrapper.m_AddLight_LKey;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_AddLight; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="AddLightActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(AddLightActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="AddLightActions" />
+        public void AddCallbacks(IAddLightActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AddLightActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AddLightActionsCallbackInterfaces.Add(instance);
+            @LKey.started += instance.OnLKey;
+            @LKey.performed += instance.OnLKey;
+            @LKey.canceled += instance.OnLKey;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="AddLightActions" />
+        private void UnregisterCallbacks(IAddLightActions instance)
+        {
+            @LKey.started -= instance.OnLKey;
+            @LKey.performed -= instance.OnLKey;
+            @LKey.canceled -= instance.OnLKey;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="AddLightActions.UnregisterCallbacks(IAddLightActions)" />.
+        /// </summary>
+        /// <seealso cref="AddLightActions.UnregisterCallbacks(IAddLightActions)" />
+        public void RemoveCallbacks(IAddLightActions instance)
+        {
+            if (m_Wrapper.m_AddLightActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="AddLightActions.AddCallbacks(IAddLightActions)" />
+        /// <seealso cref="AddLightActions.RemoveCallbacks(IAddLightActions)" />
+        /// <seealso cref="AddLightActions.UnregisterCallbacks(IAddLightActions)" />
+        public void SetCallbacks(IAddLightActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AddLightActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AddLightActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="AddLightActions" /> instance referencing this action map.
+    /// </summary>
+    public AddLightActions @AddLight => new AddLightActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Look" which allows adding and removing callbacks.
     /// </summary>
@@ -1166,5 +1294,20 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGKey(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "AddLight" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="AddLightActions.AddCallbacks(IAddLightActions)" />
+    /// <seealso cref="AddLightActions.RemoveCallbacks(IAddLightActions)" />
+    public interface IAddLightActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "LKey" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLKey(InputAction.CallbackContext context);
     }
 }
