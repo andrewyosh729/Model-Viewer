@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="" />
+    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="28-implement-pbr" />
+        <entry key="$PROJECT_DIR$/.." value="13-switch-to-unity-ui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -40,7 +47,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/03/2bf889ef/LoadResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/93/bfcf9b6f/Face.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/9a/d6e34d21/Group.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/CameraControls.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.inputactions" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Position Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -57,6 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/VerticalGradient.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Scenes/01-  Single Line TextMesh Pro.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/Common.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/Macros.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/SpaceTransforms.hlsl" root0="SKIP_HIGHLIGHTING" />
@@ -72,24 +79,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "13-switch-to-unity-ui",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build\Model Viewer.exe" />
@@ -141,10 +148,10 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12084">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6976">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="12084" />
+      <option name="pid" value="6976" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -177,7 +184,9 @@
       <workItem from="1760894299732" duration="19295000" />
       <workItem from="1761019773375" duration="1086000" />
       <workItem from="1761087906916" duration="3604000" />
-      <workItem from="1761109495434" duration="4258000" />
+      <workItem from="1761109495434" duration="4382000" />
+      <workItem from="1761171330747" duration="220000" />
+      <workItem from="1761171589026" duration="940000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -347,7 +356,39 @@
       <option name="project" value="LOCAL" />
       <updated>1761114357326</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="slight changes">
+      <option name="closed" value="true" />
+      <created>1761114836370</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1761114836370</updated>
+    </task>
+    <task id="LOCAL-00023" summary="main menu rework to beocme top bar">
+      <option name="closed" value="true" />
+      <created>1761171371106</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1761171371106</updated>
+    </task>
+    <task id="LOCAL-00024" summary="create panel prefab">
+      <option name="closed" value="true" />
+      <created>1761171394993</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1761171394993</updated>
+    </task>
+    <task id="LOCAL-00025" summary="panel prefab">
+      <option name="closed" value="true" />
+      <created>1761171422540</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1761171422540</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +468,11 @@
     <MESSAGE value="position gizmo implementation" />
     <MESSAGE value="slight modifications to blinn phong shader" />
     <MESSAGE value="Switch to unity ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch to unity ui" />
+    <MESSAGE value="slight changes" />
+    <MESSAGE value="main menu rework to beocme top bar" />
+    <MESSAGE value="create panel prefab" />
+    <MESSAGE value="panel prefab" />
+    <option name="LAST_COMMIT_MESSAGE" value="panel prefab" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -456,6 +501,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Services/InputService.cs</url>
+          <line>50</line>
+          <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Services\InputService.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1301" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1323" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

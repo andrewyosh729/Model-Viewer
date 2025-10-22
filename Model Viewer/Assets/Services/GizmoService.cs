@@ -9,31 +9,21 @@ using VContainer;
 
 public class GizmoService : MonoBehaviour
 {
-    [Inject] private InputService InputService { get; set; }
-    [SerializeField] public GizmoType ActiveGizmoType = GizmoType.Scale;
+    [NonSerialized] public GizmoType ActiveGizmoType = GizmoType.Scale;
+    public bool InteractingWithGizmo => ActiveGizmo != null && ActiveGizmo.Handles.Any(h => h.IsInteracting);
+
     [SerializeField] private List<Gizmo> Gizmos;
-    private GizmoType PreviousActiveGizmoType { get; set; }
-    private Transform m_selectedObject;
     private Gizmo ActiveGizmo { get; set; }
-    private Ray MouseRay => Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
 
-    private Transform SelectedObject
+    public void EndGizmoInteraction()
     {
-        get => m_selectedObject;
-        set
+        if (ActiveGizmo)
         {
-            m_selectedObject = value;
-
-            // unselected
-            if (m_selectedObject == null)
+            foreach (GizmoHandle handle in ActiveGizmo.Handles)
             {
-                SetAllGizmosInactive();
-                ActiveGizmo = null;
-                return;
+                handle.EndInteraction();
             }
-
-            ActivateGizmo(ActiveGizmoType);
         }
     }
 
@@ -45,43 +35,37 @@ public class GizmoService : MonoBehaviour
         }
     }
 
-    public void ActivateGizmo(GizmoType gizmoType)
+    public void ActivateGizmo(GizmoType? gizmoType, Transform target)
     {
-        ActiveGizmoType = gizmoType;
+        SetAllGizmosInactive();
 
-        if (!SelectedObject)
+        if (gizmoType == null)
         {
             return;
         }
 
-        SetAllGizmosInactive();
+        ActiveGizmoType = gizmoType.Value;
+
+        if (!target)
+        {
+            return;
+        }
+
         Gizmo gizmo = Gizmos.FirstOrDefault(g => g.Type == gizmoType);
         if (gizmo != null)
         {
             gizmo.gameObject.SetActive(true);
-            gizmo.transform.position = SelectedObject.position;
+            gizmo.transform.position = target.transform.position;
             gizmo.transform.localRotation = Quaternion.identity;
-            gizmo.Target = SelectedObject;
+            gizmo.Target = target.transform;
             ActiveGizmo = gizmo;
         }
     }
 
 
-    private void Start()
-    {
-        InputService.CameraControls.Select.MouseClick.started += MouseDown;
-        InputService.CameraControls.Select.MouseClick.canceled += MouseUp;
-    }
-
     private void Update()
     {
-        if (ActiveGizmoType != PreviousActiveGizmoType && SelectedObject)
-        {
-            ActivateGizmo(ActiveGizmoType);
-        }
-
-        PreviousActiveGizmoType = ActiveGizmoType;
-        if (ActiveGizmo)
+        if (ActiveGizmo?.Target)
         {
             transform.localScale = CalculateNewScale();
         }
@@ -96,65 +80,5 @@ public class GizmoService : MonoBehaviour
 
         float scale = distance * Mathf.Tan(fov * 0.5f) * screenFraction;
         return Vector3.one * scale;
-    }
-
-    private void MouseDown(InputAction.CallbackContext obj)
-    {
-        if (Physics.Raycast(MouseRay, out RaycastHit gizmoHit, float.MaxValue, 1 << LayerMask.NameToLayer("Gizmo")))
-        {
-            if (gizmoHit.transform.TryGetComponent(out GizmoHandle gizmoHandle))
-            {
-                gizmoHandle.BeginInteraction();
-            }
-        }
-    }
-
-    private void MouseUp(InputAction.CallbackContext obj)
-    {
-        if (EventSystem.current != null &&
-            EventSystem.current.IsPointerOverGameObject(Mouse.current.deviceId))
-        {
-            return;
-        }
-
-        try
-
-        {
-            if (ActiveGizmo != null && ActiveGizmo.Handles.Any(h => h.IsInteracting))
-            {
-                return;
-            }
-
-            if (Physics.Raycast(MouseRay, out RaycastHit hit, float.MaxValue,
-                    1 << LayerMask.NameToLayer("Default")))
-            {
-                Transform current = hit.transform;
-                while (true)
-                {
-                    if (!current.parent)
-                    {
-                        break;
-                    }
-
-                    current = current.parent;
-                }
-
-                SelectedObject = current;
-            }
-            else
-            {
-                SelectedObject = null;
-            }
-        }
-        finally
-        {
-            if (ActiveGizmo)
-            {
-                foreach (GizmoHandle handle in ActiveGizmo.Handles)
-                {
-                    handle.EndInteraction();
-                }
-            }
-        }
     }
 }

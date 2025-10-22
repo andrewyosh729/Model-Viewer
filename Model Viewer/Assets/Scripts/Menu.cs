@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
 
     [Inject] private GizmoService GizmoService { get; set; }
     [Inject] private LightFactory LightFactory { get; set; }
+    [Inject] private InputService InputService { get; set; }
 
     [SerializeField] private RawImage PositionGizmoImage;
     [SerializeField] private RawImage RotationGizmoImage;
@@ -58,7 +59,7 @@ public class Menu : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
 
-        GizmoService.ActivateGizmo(type);
+        GizmoService.ActivateGizmo(type, InputService.SelectedObject);
     }
 
     [UsedImplicitly]

@@ -169,6 +169,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Delete",
+            "id": "a60def4d-6e35-44d4-895e-39eda049610a",
+            "actions": [
+                {
+                    "name": "DeleteKey",
+                    "type": "Button",
+                    "id": "92778582-0cac-4bf3-b9b2-49fd98720437",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "465e7da9-d2c8-46ed-b93e-137d27bebb72",
+                    "path": "<Keyboard>/delete",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

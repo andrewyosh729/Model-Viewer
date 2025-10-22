@@ -255,6 +255,34 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Delete"",
+            ""id"": ""a60def4d-6e35-44d4-895e-39eda049610a"",
+            ""actions"": [
+                {
+                    ""name"": ""DeleteKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""92778582-0cac-4bf3-b9b2-49fd98720437"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""465e7da9-d2c8-46ed-b93e-137d27bebb72"",
+                    ""path"": ""<Keyboard>/delete"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DeleteKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -277,6 +305,9 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         // Select
         m_Select = asset.FindActionMap("Select", throwIfNotFound: true);
         m_Select_MouseClick = m_Select.FindAction("Mouse Click", throwIfNotFound: true);
+        // Delete
+        m_Delete = asset.FindActionMap("Delete", throwIfNotFound: true);
+        m_Delete_DeleteKey = m_Delete.FindAction("DeleteKey", throwIfNotFound: true);
     }
 
     ~@CameraControls()
@@ -287,6 +318,7 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Pan.enabled, "This will cause a leak and performance issues, CameraControls.Pan.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Recenter.enabled, "This will cause a leak and performance issues, CameraControls.Recenter.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Select.enabled, "This will cause a leak and performance issues, CameraControls.Select.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Delete.enabled, "This will cause a leak and performance issues, CameraControls.Delete.Disable() has not been called.");
     }
 
     /// <summary>
@@ -934,6 +966,102 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="SelectActions" /> instance referencing this action map.
     /// </summary>
     public SelectActions @Select => new SelectActions(this);
+
+    // Delete
+    private readonly InputActionMap m_Delete;
+    private List<IDeleteActions> m_DeleteActionsCallbackInterfaces = new List<IDeleteActions>();
+    private readonly InputAction m_Delete_DeleteKey;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Delete".
+    /// </summary>
+    public struct DeleteActions
+    {
+        private @CameraControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public DeleteActions(@CameraControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Delete/DeleteKey".
+        /// </summary>
+        public InputAction @DeleteKey => m_Wrapper.m_Delete_DeleteKey;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Delete; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="DeleteActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(DeleteActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="DeleteActions" />
+        public void AddCallbacks(IDeleteActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DeleteActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DeleteActionsCallbackInterfaces.Add(instance);
+            @DeleteKey.started += instance.OnDeleteKey;
+            @DeleteKey.performed += instance.OnDeleteKey;
+            @DeleteKey.canceled += instance.OnDeleteKey;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="DeleteActions" />
+        private void UnregisterCallbacks(IDeleteActions instance)
+        {
+            @DeleteKey.started -= instance.OnDeleteKey;
+            @DeleteKey.performed -= instance.OnDeleteKey;
+            @DeleteKey.canceled -= instance.OnDeleteKey;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DeleteActions.UnregisterCallbacks(IDeleteActions)" />.
+        /// </summary>
+        /// <seealso cref="DeleteActions.UnregisterCallbacks(IDeleteActions)" />
+        public void RemoveCallbacks(IDeleteActions instance)
+        {
+            if (m_Wrapper.m_DeleteActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="DeleteActions.AddCallbacks(IDeleteActions)" />
+        /// <seealso cref="DeleteActions.RemoveCallbacks(IDeleteActions)" />
+        /// <seealso cref="DeleteActions.UnregisterCallbacks(IDeleteActions)" />
+        public void SetCallbacks(IDeleteActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DeleteActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DeleteActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="DeleteActions" /> instance referencing this action map.
+    /// </summary>
+    public DeleteActions @Delete => new DeleteActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Look" which allows adding and removing callbacks.
     /// </summary>
@@ -1023,5 +1151,20 @@ public partial class @CameraControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Delete" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="DeleteActions.AddCallbacks(IDeleteActions)" />
+    /// <seealso cref="DeleteActions.RemoveCallbacks(IDeleteActions)" />
+    public interface IDeleteActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "DeleteKey" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDeleteKey(InputAction.CallbackContext context);
     }
 }
