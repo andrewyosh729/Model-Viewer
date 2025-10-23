@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Editor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CameraControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraControls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bulb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bulb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Services/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="13-switch-to-unity-ui" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -42,7 +48,12 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2d15428864f74f48b300fedf813e571529c00/60/9023f771/RaycastHit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/0a/548ebc0f/TextureFormat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/17/897f32fd/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/2b/87b60a56/Texture2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/3d/12bdd196/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/ff/afcfc6ee/Texture.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/59bd7c40c082431db25e1e728ab6278946ae00/e2/d1849140/Nullable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/59bd7c40c082431db25e1e728ab6278946ae00/f2/10674937/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/03/2bf889ef/LoadResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/93/bfcf9b6f/Face.cs" root0="FORCE_HIGHLIGHTING" />
@@ -54,12 +65,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ModelEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Shaders/PBR.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/VerticalGradient.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Scenes/01-  Single Line TextMesh Pro.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/packages.config" root0="FORCE_HIGHLIGHTING" />
@@ -85,7 +103,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;33-create-an-inspector-for-models&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -186,7 +204,7 @@
       <workItem from="1761087906916" duration="3604000" />
       <workItem from="1761109495434" duration="4382000" />
       <workItem from="1761171330747" duration="220000" />
-      <workItem from="1761171589026" duration="940000" />
+      <workItem from="1761171589026" duration="19312000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -388,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761171422540</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="BIG refactor of gizmoservice/inputservice">
+      <option name="closed" value="true" />
+      <created>1761172696620</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1761172696620</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +473,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="gitignore + unity project" />
     <MESSAGE value="uhh" />
     <MESSAGE value="Implement basic orbiting controls." />
     <MESSAGE value="Implement momentum-based camera movement by introducing velocity falloff and smoothing for rotational input." />
@@ -472,7 +497,8 @@
     <MESSAGE value="main menu rework to beocme top bar" />
     <MESSAGE value="create panel prefab" />
     <MESSAGE value="panel prefab" />
-    <option name="LAST_COMMIT_MESSAGE" value="panel prefab" />
+    <MESSAGE value="BIG refactor of gizmoservice/inputservice" />
+    <option name="LAST_COMMIT_MESSAGE" value="BIG refactor of gizmoservice/inputservice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -501,19 +527,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Services/InputService.cs</url>
-          <line>50</line>
-          <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Services\InputService.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="1301" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1323" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

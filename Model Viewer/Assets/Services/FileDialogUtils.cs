@@ -40,7 +40,7 @@ namespace Services
         public static bool TryOpenFile(out string path)
         {
 #if UNITY_EDITOR
-            path = EditorUtility.OpenFilePanel("Import Model...", "", "obj");
+            path = EditorUtility.OpenFilePanel("Import...", "", null);
             return !string.IsNullOrEmpty(path);
 #else
             OpenFileName ofn = new OpenFileName();
@@ -51,7 +51,7 @@ namespace Services
             ofn.nMaxFile = ofn.lpstrFile.Length;
             ofn.lpstrFileTitle = new string(new char[64]);
             ofn.nMaxFileTitle = ofn.lpstrFileTitle.Length;
-            ofn.lpstrTitle = "Import Model...";
+            ofn.lpstrTitle = "Import...";
             if (GetOpenFileName(ref ofn))
             {
                 path = ofn.lpstrFile;

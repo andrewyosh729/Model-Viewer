@@ -2,10 +2,16 @@ Shader "Custom/PBR"
 {
     Properties
     {
-        _Albedo ("Albedo", Color) = (1,1,1,1)
-        _Metallicness ("Metallicness", float) = 0
-        _Roughness ("Roughness", float) = 0.3
-        _Ao ("ao", float) = 1
+        _MainTex ("Albedo (RGB) + Alpha (unused)", 2D) = "white" {}
+
+        _MetallicMap ("Metallic (R)", 2D) = "white" {}
+
+        _RoughnessMap ("Roughness (R)", 2D) = "white" {}
+
+        _OcclusionMap ("AO (R)", 2D) = "white" {}
+
+        _NormalMap ("Normal Map", 2D) = "bump" {}
+
     }
 
     SubShader
@@ -35,6 +41,7 @@ Shader "Custom/PBR"
             {
                 float4 positionOS : POSITION;
                 float3 normalOS: NORMAL;
+                float4 tangentOS : TANGENT;
                 float2 uv : TEXCOORD0;
             };
 
@@ -44,7 +51,24 @@ Shader "Custom/PBR"
                 float3 normalWS : TEXCOORD0;
                 float3 viewDirWS : TEXCOORD1;
                 float3 worldPos : TEXCOORD2;
+                float4 tangentWS : TEXCOORD3;
+                float2 uv : TEXCOORD4;
             };
+
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            TEXTURE2D(_MetallicMap);
+            SAMPLER(sampler_MetallicMap);
+
+            TEXTURE2D(_RoughnessMap);
+            SAMPLER(sampler_RoughnessMap);
+
+            TEXTURE2D(_OcclusionMap);
+            SAMPLER(sampler_OcclusionMap);
+
+            TEXTURE2D(_NormalMap);
+            SAMPLER(sampler_NormalMap);
 
             float4 _Albedo;
             float _Metallicness;
@@ -57,8 +81,11 @@ Shader "Custom/PBR"
                 float3 positionWS = TransformObjectToWorld(IN.positionOS);
                 OUT.positionHCS = TransformWorldToHClip(positionWS.xyz);
                 OUT.normalWS = normalize(TransformObjectToWorldNormal(IN.normalOS));
+                OUT.tangentWS.xyz = normalize(TransformObjectToWorldDir(IN.tangentOS.xyz));
+                OUT.tangentWS.w = IN.tangentOS.w;
                 OUT.viewDirWS = normalize(_WorldSpaceCameraPos - positionWS.xyz);
                 OUT.worldPos = positionWS.xyz;
+                OUT.uv = IN.uv;
                 return OUT;
             }
 
@@ -69,8 +96,7 @@ Shader "Custom/PBR"
 
             float DistributionGgx(float3 n, float3 h, float roughness)
             {
-                float a = pow(roughness, 2);
-                float a2 = pow(a, 2);
+                float a2 = pow(roughness, 2);
                 float nDotH = max(dot(n, h), 0);
                 float nDotH2 = pow(nDotH, 2);
 
@@ -100,10 +126,30 @@ Shader "Custom/PBR"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                float3 n = normalize(IN.normalWS);
-                float3 v = normalize(IN.viewDirWS);
+                float4 albedoSample = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
+                float4 metallicSample = SAMPLE_TEXTURE2D(_MetallicMap, sampler_MetallicMap, IN.uv);
+                float4 roughnessSample = SAMPLE_TEXTURE2D(_RoughnessMap, sampler_RoughnessMap, IN.uv);
+                float4 aoSample = SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, IN.uv);
 
-                float3 lo = float3(0.03, 0.03, 0.03) * _Albedo * _Ao; // ambient
+                float3 albedo = pow(albedoSample.rgb, 2.2);
+                float metallic = metallicSample.r;
+                float roughness = roughnessSample.r;
+                float ao =  aoSample.r;
+
+
+                // normal map
+                float3 n = normalize(IN.normalWS);
+                float3 t = normalize(IN.tangentWS.xyz);
+                float tangentW = IN.tangentWS.w;
+                float3 normalSample = SAMPLE_TEXTURE2D(_NormalMap, sampler_NormalMap, IN.uv).rgb;
+                float3 normalT = normalize(normalSample * 2.0 - 1.0);
+                float3 b = normalize(cross(n, t)) * tangentW;
+                float3x3 tbn = float3x3(t, b, n);
+                float3 normalWS = normalize(mul(normalT, tbn));
+                n = normalWS;
+
+                float3 v = normalize(IN.viewDirWS);
+                float3 lo = float3(0.03, 0.03, 0.03) * albedo * ao; // ambient
 
                 int additionalLightCount = GetAdditionalLightsCount();
 
@@ -115,29 +161,28 @@ Shader "Custom/PBR"
                     float3 radiance = light.color * light.distanceAttenuation;
 
                     float3 f0 = float3(0.04, 0.04, 0.04);
-                    f0 = lerp(f0, _Albedo, _Metallicness);
+                    f0 = lerp(f0, albedo, metallic);
                     float3 f = FresnelSchlick(max(dot(h, v), 0), f0);
-                    float ndf = DistributionGgx(n, h, _Roughness);
-                    float g = GeometrySmith(n, v, l, _Roughness);
+                    float ndf = DistributionGgx(n, h, roughness);
+                    float g = GeometrySmith(n, v, l, roughness);
 
                     float3 numerator = ndf * f * g;
                     float denominator = 4.0 * max(dot(n, v), 0) * max(dot(n, l), 0) + Eps_float();
                     float3 specular = numerator / denominator;
 
                     float kS = f;
-                    float kD = float3(1, 1, 1) - kS;
-                    kD *= 1 - _Metallicness;
+                    float kD = 1 - kS;
+                    kD *= 1 - metallic;
 
                     float nDotL = max(dot(n, l), 0);
-                    lo += (kD * (_Albedo / PI) + specular) * radiance * nDotL;
+                    lo += (kD * (albedo / PI) + specular) * radiance * nDotL;
                 }
 
 
+                lo = lo / (lo + float3(1, 1, 1));
+                float x = 1.0 / 2.2;
+                lo = pow(lo, float3(x, x, x));
 
-                lo = lo / (lo + float3(1,1,1));
-                float x = 1.0/2.2;
-                lo = pow(lo, float3(x,x,x));
-                
                 return float4(lo, 1.0);
             }
             ENDHLSL

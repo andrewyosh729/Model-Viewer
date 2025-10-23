@@ -31,6 +31,12 @@ public class Menu : MonoBehaviour
         }
     }
 
+    [UsedImplicitly]
+    public void CreateSphere()
+    {
+        ModelImportService.CreateSphere();
+    }
+
     private void GizmoSelected(GizmoType type)
     {
         switch (type)
