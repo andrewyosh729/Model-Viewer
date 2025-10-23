@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using VContainer;
 public class InputService : MonoBehaviour
 {
     public CameraControls CameraControls { get; private set; }
+    public event Action<Transform> SelectedObjectUpdated;
     [Inject] private GizmoService GizmoService { get; set; }
 
     private Ray MouseRay => Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -18,6 +20,7 @@ public class InputService : MonoBehaviour
         private set
         {
             m_selectedObject = value;
+            SelectedObjectUpdated?.Invoke(m_selectedObject);
 
             // unselected
             if (m_selectedObject == null)

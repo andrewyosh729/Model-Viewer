@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using VContainer;
 
 
 public class GizmoService : MonoBehaviour
 {
-    [NonSerialized] public GizmoType ActiveGizmoType = GizmoType.Scale;
+    [NonSerialized] public GizmoType ActiveGizmoType = GizmoType.Position;
     public bool InteractingWithGizmo => ActiveGizmo != null && ActiveGizmo.Handles.Any(h => h.IsInteracting);
 
     [SerializeField] private List<Gizmo> Gizmos;
