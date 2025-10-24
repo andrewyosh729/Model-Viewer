@@ -24,6 +24,17 @@ public class GizmoService : MonoBehaviour
         }
     }
 
+    public void EndGizmoHover()
+    {
+        if (ActiveGizmo)
+        {
+            foreach (GizmoHandle handle in ActiveGizmo.Handles)
+            {
+                handle.EndHover();
+            }
+        }
+    }
+
     private void SetAllGizmosInactive()
     {
         foreach (Gizmo gizmo in Gizmos)
