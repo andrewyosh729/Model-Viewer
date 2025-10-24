@@ -2,5 +2,6 @@ public enum Axis
 {
     X,
     Y,
-    Z
+    Z,
+    All
 }

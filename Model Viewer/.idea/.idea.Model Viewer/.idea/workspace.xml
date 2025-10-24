@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="uniform scale handle">
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/UniformScaleMaterial.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/UniformScaleMaterial.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UniformResizeHandle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UniformResizeHandle.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/XAxisMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/XAxisMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/YAxisMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/YAxisMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GizmoHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GizmoHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scale Gizmo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scale Gizmo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Axis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Axis.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Services/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UnlitAlwaysRender.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/UnlitAlwaysRender.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="36-the-rotation-tool-should-be-more-user-friendly" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -56,13 +60,19 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4277014f7364873a173cdff18d5157f5200/9a/d6e34d21/Group.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CameraControls.inputactions" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Materials/UniformScaleMaterial.mat.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Position Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Rotation Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Axis.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/GizmoHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/GizmoService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -86,24 +96,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;33-create-an-inspector-for-models&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "38-uniform-scale-handle",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build\Model Viewer.exe" />
@@ -461,7 +471,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="uhh" />
     <MESSAGE value="Implement basic orbiting controls." />
     <MESSAGE value="Implement momentum-based camera movement by introducing velocity falloff and smoothing for rotational input." />
     <MESSAGE value="implement panning" />
@@ -486,7 +495,8 @@
     <MESSAGE value="create panel prefab" />
     <MESSAGE value="panel prefab" />
     <MESSAGE value="BIG refactor of gizmoservice/inputservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="BIG refactor of gizmoservice/inputservice" />
+    <MESSAGE value="uniform scale handle" />
+    <option name="LAST_COMMIT_MESSAGE" value="uniform scale handle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
