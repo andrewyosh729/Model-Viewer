@@ -37,6 +37,7 @@ namespace Services
                 MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
                 meshRenderer.material = new Material(Shader.Find("Custom/PBR"));
                 UnityEngine.Mesh unityMesh = new UnityEngine.Mesh();
+                unityMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
                 unityMesh.vertices = assimpMesh.Vertices.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray();
                 unityMesh.normals = assimpMesh.Normals.Select(v => new Vector3(v.X, v.Y, v.Z)).ToArray();
                 unityMesh.uv = assimpMesh.TextureCoordinateChannels[0].Select(v => new Vector2(v.X, v.Y)).ToArray();
