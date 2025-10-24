@@ -11,6 +11,8 @@ public abstract class Gizmo : MonoBehaviour
 
     public abstract GizmoType Type { get; }
 
+    public virtual float SnapInterval => 0;
+
 
     private void Update()
     {

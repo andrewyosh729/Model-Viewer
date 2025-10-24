@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PositionGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RotationGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RotationGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RotationHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RotationHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TranslationHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TranslationHandle.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="40-add-support-for-displacement-maps" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -55,15 +58,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Position Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Rotation Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Axis.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/GizmoHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Gizmo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Gizmo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/ResizeHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/GizmoService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -93,7 +94,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "40-add-support-for-displacement-maps",
+    "git-widget-placeholder": "31-snap-gizmos",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -156,13 +157,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17548">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="17548" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -514,13 +517,13 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/RotationHandle.cs</url>
-          <line>35</line>
+          <line>38</line>
           <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Scripts\RotationHandle.cs" containingFunctionPresentation="Method 'UpdateHandle'">
             <startOffsets>
-              <option value="1111" />
+              <option value="1207" />
             </startOffsets>
             <endOffsets>
-              <option value="1378" />
+              <option value="1474" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />

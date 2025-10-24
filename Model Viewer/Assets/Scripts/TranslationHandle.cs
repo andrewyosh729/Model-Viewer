@@ -8,6 +8,7 @@ public class TranslationHandle : GizmoHandle
     private Vector3 TranslationDirection => transform.up.normalized;
 
     private Vector3? PreviousHitPosition { get; set; }
+    private float AccumulatedTranslationDelta { get; set; }
 
     protected override void OnBeginInteraction()
     {
@@ -18,6 +19,8 @@ public class TranslationHandle : GizmoHandle
         {
             PreviousHitPosition = ray.GetPoint(distance);
         }
+
+        AccumulatedTranslationDelta = 0;
     }
 
     public override void UpdateHandle()
@@ -34,7 +37,19 @@ public class TranslationHandle : GizmoHandle
             Vector3 hit = ray.GetPoint(distance);
             Vector3 dragVector = hit - PreviousHitPosition.Value;
             float translationDelta = Vector3.Dot(dragVector, TranslationDirection);
-            Gizmo.Target.Translate(TranslationDirection * translationDelta, Space.World);
+            AccumulatedTranslationDelta += translationDelta;
+
+            if (Gizmo.SnapInterval <= 0)
+            {
+                Gizmo.Target.Translate(TranslationDirection * translationDelta, Space.World);
+            }
+            else if (Mathf.Abs(AccumulatedTranslationDelta) >= Gizmo.SnapInterval)
+            {
+                Gizmo.Target.Translate(
+                    TranslationDirection * (Gizmo.SnapInterval * Mathf.Sign(AccumulatedTranslationDelta)), Space.World);
+                AccumulatedTranslationDelta = 0;
+            }
+
             PreviousHitPosition = hit;
         }
     }
