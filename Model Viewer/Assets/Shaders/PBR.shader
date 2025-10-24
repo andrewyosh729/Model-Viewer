@@ -12,6 +12,7 @@ Shader "Custom/PBR"
 
         _NormalMap ("Normal Map", 2D) = "bump" {}
 
+        _DisplacementMap ("Displacement Map", 2D) = "black" {}
     }
 
     SubShader
@@ -70,6 +71,9 @@ Shader "Custom/PBR"
             TEXTURE2D(_NormalMap);
             SAMPLER(sampler_NormalMap);
 
+            TEXTURE2D(_DisplacementMap);
+            SAMPLER(sampler_DisplacementMap);
+
             float4 _Albedo;
             float _Metallicness;
             float _Roughness;
@@ -78,12 +82,18 @@ Shader "Custom/PBR"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                float3 positionWS = TransformObjectToWorld(IN.positionOS);
-                OUT.positionHCS = TransformWorldToHClip(positionWS.xyz);
+
+
                 OUT.normalWS = normalize(TransformObjectToWorldNormal(IN.normalOS));
+                float3 positionWS = TransformObjectToWorld(IN.positionOS);
+
+                float displacement = _DisplacementMap.SampleLevel(sampler_DisplacementMap, IN.uv, 0).r;
+                float3 displacedPositionWS = positionWS + OUT.normalWS * displacement * 0.2;
+
+                OUT.positionHCS = TransformWorldToHClip(displacedPositionWS.xyz);
                 OUT.tangentWS.xyz = normalize(TransformObjectToWorldDir(IN.tangentOS.xyz));
                 OUT.tangentWS.w = IN.tangentOS.w;
-                OUT.viewDirWS = normalize(_WorldSpaceCameraPos - positionWS.xyz);
+                OUT.viewDirWS = normalize(_WorldSpaceCameraPos - displacedPositionWS.xyz);
                 OUT.worldPos = positionWS.xyz;
                 OUT.uv = IN.uv;
                 return OUT;
@@ -134,7 +144,7 @@ Shader "Custom/PBR"
                 float3 albedo = pow(albedoSample.rgb, 2.2);
                 float metallic = metallicSample.r;
                 float roughness = roughnessSample.r;
-                float ao =  aoSample.r;
+                float ao = aoSample.r;
 
 
                 // normal map

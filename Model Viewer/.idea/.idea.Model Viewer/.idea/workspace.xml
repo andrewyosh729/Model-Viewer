@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="uniform scale handle">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/UniformScaleMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/UniformScaleMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UniformResizeHandle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UniformResizeHandle.cs.meta" afterDir="false" />
+    <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/ZAxisMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scale Gizmo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scale Gizmo.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Axis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Axis.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ResizeHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Services/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/InputService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="36-the-rotation-tool-should-be-more-user-friendly" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -102,7 +93,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "38-uniform-scale-handle",
+    "git-widget-placeholder": "40-add-support-for-displacement-maps",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -412,7 +403,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761172696620</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="uniform scale handle">
+      <option name="closed" value="true" />
+      <created>1761276526993</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1761276526993</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
