@@ -9,7 +9,7 @@ Shader "Custom/UnlitAlwaysRender"
     {
         Tags
         {
-            "RenderType"="Opaque" "Queue"="Overlay"
+            "RenderType"="Transparent" "Queue"="Overlay"
         }
 
         // Disable depth testing so it always renders on top
@@ -23,6 +23,9 @@ Shader "Custom/UnlitAlwaysRender"
             Comp NotEqual 
             Pass Replace 
         }
+        
+        Blend SrcAlpha OneMinusSrcAlpha
+
 
         Pass
         {

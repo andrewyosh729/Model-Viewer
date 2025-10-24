@@ -42,7 +42,6 @@ public class InputService : MonoBehaviour
 
     private void Start()
     {
-        CameraControls.Select.MouseClick.started += MouseDown;
         CameraControls.Select.MouseClick.canceled += MouseUp;
     }
 
@@ -53,15 +52,24 @@ public class InputService : MonoBehaviour
             Destroy(SelectedObject.gameObject);
             SelectedObject = null;
         }
-    }
 
-    private void MouseDown(InputAction.CallbackContext obj)
-    {
         if (Physics.Raycast(MouseRay, out RaycastHit gizmoHit, float.MaxValue, 1 << LayerMask.NameToLayer("Gizmo")))
         {
             if (gizmoHit.transform.TryGetComponent(out GizmoHandle gizmoHandle))
             {
-                gizmoHandle.BeginInteraction();
+                GizmoService.EndGizmoHover();
+                gizmoHandle.BeginHover();
+                if (CameraControls.Select.MouseClick.triggered)
+                {
+                    gizmoHandle.BeginInteraction();
+                }
+            }
+        }
+        else
+        {
+            if (!GizmoService.InteractingWithGizmo)
+            {
+                GizmoService.EndGizmoHover();
             }
         }
     }
