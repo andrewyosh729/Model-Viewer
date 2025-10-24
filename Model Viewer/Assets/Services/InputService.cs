@@ -55,7 +55,7 @@ public class InputService : MonoBehaviour
 
         if (Physics.Raycast(MouseRay, out RaycastHit gizmoHit, float.MaxValue, 1 << LayerMask.NameToLayer("Gizmo")))
         {
-            if (gizmoHit.transform.TryGetComponent(out GizmoHandle gizmoHandle))
+            if (gizmoHit.transform.TryGetComponent(out GizmoHandle gizmoHandle) && !GizmoService.InteractingWithGizmo)
             {
                 GizmoService.EndGizmoHover();
                 gizmoHandle.BeginHover();

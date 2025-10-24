@@ -25,7 +25,7 @@ public class ResizeHandle : GizmoHandle
         InitialHandleLossyScale = transform.lossyScale;
     }
 
-    
+
     public override void UpdateHandle()
     {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
