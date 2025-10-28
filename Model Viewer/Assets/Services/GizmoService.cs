@@ -4,12 +4,13 @@ using System.Linq;
 using UnityEngine;
 
 
-public class GizmoService : MonoBehaviour
+public class GizmoService : MonoBehaviour, IGizmoService
 {
     [NonSerialized] public GizmoType ActiveGizmoType = GizmoType.Position;
     public bool InteractingWithGizmo => ActiveGizmo != null && ActiveGizmo.Handles.Any(h => h.IsInteracting);
 
     [SerializeField] private List<Gizmo> Gizmos;
+    IReadOnlyList<Gizmo> IGizmoService.Gizmos => Gizmos;
     private Gizmo ActiveGizmo { get; set; }
 
 
@@ -89,4 +90,9 @@ public class GizmoService : MonoBehaviour
         float scale = distance * Mathf.Tan(fov * 0.5f) * screenFraction;
         return Vector3.one * scale;
     }
+}
+
+public interface IGizmoService
+{
+    IReadOnlyList<Gizmo> Gizmos { get; }
 }

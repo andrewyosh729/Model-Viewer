@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4efd4356-fec8-4d37-9088-d18e375f85af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EditorService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EditorService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalEditor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Model Viewer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/LightMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bulb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bulb.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LightEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LightEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ModelEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ModelEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PositionGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RotationGizmo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RotationGizmo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TabHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TabHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/GizmoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelImportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Services/ModelViewerLifetimeScope.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/PBR.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="40-add-support-for-displacement-maps" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,9 +55,12 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0fe309108f574aaea2b7250a6a69f0cd29c00/2c/c78e5f26/PostProcessSteps.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0fe309108f574aaea2b7250a6a69f0cd29c00/fd/3af56f4c/TextureType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2d15428864f74f48b300fedf813e571529c00/60/9023f771/RaycastHit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/0a/548ebc0f/TextureFormat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/17/897f32fd/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/1b/90df914b/Color.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/2b/87b60a56/Texture2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/3d/12bdd196/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41b87322553648a1a76174c5109c71f91f7000/ff/afcfc6ee/Texture.cs" root0="FORCE_HIGHLIGHTING" />
@@ -55,15 +75,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Position Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Rotation Gizmo.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Axis.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/GizmoHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Scripts/Editor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEditor.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/FileDialogUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/FileDialogUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/FileDialogUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/GizmoService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/coola/Model-Viewer/Model Viewer/Assets/Services/InputService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/InputService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -75,6 +94,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/Common.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/Macros.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@67f868dbad82/ShaderLibrary/SpaceTransforms.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@19ee6e1cc8be/Runtime/Internal/ReflectionInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer@19ee6e1cc8be/Runtime/Unity/LifetimeScope.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -87,24 +107,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "40-add-support-for-displacement-maps",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;31-snap-gizmos&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build\Model Viewer.exe" />
@@ -194,6 +214,7 @@
       <workItem from="1761171330747" duration="220000" />
       <workItem from="1761171589026" duration="19312000" />
       <workItem from="1761270740728" duration="1487000" />
+      <workItem from="1761613820786" duration="3947000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore + unity project">
       <option name="closed" value="true" />
@@ -411,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761276526993</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="snapping for position and rotation - still need to implement UI to update snap intervals">
+      <option name="closed" value="true" />
+      <created>1761347284774</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1761347284774</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Implement basic orbiting controls." />
     <MESSAGE value="Implement momentum-based camera movement by introducing velocity falloff and smoothing for rotational input." />
     <MESSAGE value="implement panning" />
     <MESSAGE value="packages" />
@@ -495,7 +523,8 @@
     <MESSAGE value="panel prefab" />
     <MESSAGE value="BIG refactor of gizmoservice/inputservice" />
     <MESSAGE value="uniform scale handle" />
-    <option name="LAST_COMMIT_MESSAGE" value="uniform scale handle" />
+    <MESSAGE value="snapping for position and rotation - still need to implement UI to update snap intervals" />
+    <option name="LAST_COMMIT_MESSAGE" value="snapping for position and rotation - still need to implement UI to update snap intervals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -514,18 +543,64 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/RotationHandle.cs</url>
-          <line>35</line>
+          <line>38</line>
           <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Scripts\RotationHandle.cs" containingFunctionPresentation="Method 'UpdateHandle'">
             <startOffsets>
-              <option value="1111" />
+              <option value="1207" />
             </startOffsets>
             <endOffsets>
-              <option value="1378" />
+              <option value="1474" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs</url>
+          <line>272</line>
+          <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Services\ModelImportService.cs" containingFunctionPresentation="Method 'TryLoadTexture'">
+            <startOffsets>
+              <option value="10598" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10654" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs</url>
+          <line>79</line>
+          <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Services\ModelImportService.cs" containingFunctionPresentation="Method 'ImportModel'">
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Services/ModelImportService.cs</url>
+          <line>94</line>
+          <properties documentPath="C:\Users\coola\Model-Viewer\Model Viewer\Assets\Services\ModelImportService.cs" containingFunctionPresentation="Method 'ImportModel'">
+            <startOffsets>
+              <option value="4316" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4387" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="mat.GetAllMaterialTextures()" language="C#" />
+        <watch expression="mat.GetAllProperties()" language="C#" />
+        <watch expression="((Assimp.MaterialProperty[]) mat.GetAllProperties())[3].Name" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

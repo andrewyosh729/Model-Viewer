@@ -6,6 +6,7 @@ public class RotationHandle : GizmoHandle
 {
     private Vector3 PreviousHitVector { get; set; }
 
+    private float AccumulatedRotationDelta { get; set; }
 
     protected override void OnBeginInteraction()
     {
@@ -24,6 +25,8 @@ public class RotationHandle : GizmoHandle
             PreviousHitVector = ray.GetPoint(distance) - transform.position;
             PreviousHitVector = Vector3.ProjectOnPlane(PreviousHitVector, rotationPlane.normal);
         }
+
+        AccumulatedRotationDelta = 0;
     }
 
     protected override Plane GetHandlePlane(Vector3 axis)
@@ -50,7 +53,19 @@ public class RotationHandle : GizmoHandle
             currentVector = Vector3.ProjectOnPlane(currentVector, rotationPlane.normal);
             float deltaAngle =
                 Vector3.SignedAngle(PreviousHitVector.normalized, currentVector.normalized, rotationAxis);
-            Gizmo.Target.rotation = Quaternion.AngleAxis(deltaAngle, rotationAxis) * Gizmo.Target.rotation;
+            AccumulatedRotationDelta += deltaAngle;
+
+            if (Gizmo.SnapInterval <= 0)
+            {
+                Gizmo.Target.rotation = Quaternion.AngleAxis(deltaAngle, rotationAxis) * Gizmo.Target.rotation;
+            }
+            else if (Mathf.Abs(AccumulatedRotationDelta) >= Gizmo.SnapInterval)
+            {
+                Gizmo.Target.rotation =
+                    Quaternion.AngleAxis(Mathf.Sign(AccumulatedRotationDelta) * Gizmo.SnapInterval, rotationAxis) *
+                    Gizmo.Target.rotation;
+                AccumulatedRotationDelta = 0;
+            }
 
             PreviousHitVector = currentVector;
         }

@@ -40,7 +40,7 @@ namespace Services
         public static bool TryOpenFile(out string path)
         {
 #if UNITY_EDITOR
-            path = EditorUtility.OpenFilePanel("Import...", "", null);
+            path = EditorUtility.OpenFilePanel("Import GLTF...", "", "gltf");
             return !string.IsNullOrEmpty(path);
 #else
             OpenFileName ofn = new OpenFileName();

@@ -10,7 +10,7 @@ namespace Services
             base.Configure(builder);
             builder.Register<ModelImportService>(Lifetime.Singleton).As<IModelImportService>();
             builder.RegisterComponentInHierarchy<InputService>();
-            builder.RegisterComponentInHierarchy<GizmoService>();
+            builder.RegisterComponentInHierarchy<GizmoService>().As<IGizmoService, GizmoService>();
             builder.RegisterComponentInHierarchy<LightFactory>();
         }
     }

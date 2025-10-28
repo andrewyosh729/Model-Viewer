@@ -2,15 +2,16 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using VContainer;
 
 public class LightEditor : Editor
 {
     [SerializeField] private TMP_InputField IntensityInputField;
-
+    [Inject] private InputService InputService;
     private Light Light { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override string EditorTag => "Light";
+    public override string EditorTag => "Light";
 
     protected override void Start()
     {
