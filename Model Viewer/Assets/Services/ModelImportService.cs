@@ -111,11 +111,6 @@ namespace Services
                         {
                             words.Add("metallic");
                         }
-                        
-                        if (fileName.Contains("metallic"))
-                        {
-                            words.Add("metallic");
-                        }
 
                         List<ORMPermutation> fullPermutations = GeneratePermutations(words);
 
