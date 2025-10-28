@@ -1,11 +1,35 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
+
+[System.Serializable]
+public struct TabInfo
+{
+    [SerializeField] public Button Button;
+    [SerializeField] public GameObject Panel;
+}
 
 public class TabHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject PanelToControl;
+    [SerializeField] private List<TabInfo> Tabs;
 
-    public void TogglePanel()
+    private void Start()
     {
-        PanelToControl.SetActive(!PanelToControl.activeSelf);
+        foreach (TabInfo tabInfo in Tabs)
+        {
+            tabInfo.Button.onClick.AddListener(TabButtonClicked);
+            tabInfo.Panel.SetActive(false);
+            void TabButtonClicked()
+            {
+                foreach (TabInfo info in Tabs)
+                {
+                    info.Panel.SetActive(false);
+                }
+
+                tabInfo.Panel.SetActive(true);
+            }
+        }
     }
 }

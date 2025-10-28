@@ -4,15 +4,17 @@ Shader "Custom/PBR"
     {
         _MainTex ("Albedo (RGB) + Alpha (unused)", 2D) = "white" {}
 
-        _MetallicMap ("Metallic (R)", 2D) = "white" {}
+        _MetallicMap ("Metallic (R)", 2D) = "black" {}
 
-        _RoughnessMap ("Roughness (R)", 2D) = "white" {}
+        _RoughnessMap ("Roughness (R)", 2D) = "black" {}
 
-        _OcclusionMap ("AO (R)", 2D) = "white" {}
+        _OcclusionMap ("AO (R)", 2D) = "black" {}
 
         _NormalMap ("Normal Map", 2D) = "bump" {}
 
         _DisplacementMap ("Displacement Map", 2D) = "black" {}
+
+        _SpecularGlossinessMap ("Specular Map", 2D) = "black" {}
     }
 
     SubShader
@@ -74,6 +76,10 @@ Shader "Custom/PBR"
             TEXTURE2D(_DisplacementMap);
             SAMPLER(sampler_DisplacementMap);
 
+            TEXTURE2D(_SpecularGlossinessMap);
+            SAMPLER(sampler_SpecularGlossinessMap);
+
+
             float4 _Albedo;
             float _Metallicness;
             float _Roughness;
@@ -88,13 +94,13 @@ Shader "Custom/PBR"
                 float3 positionWS = TransformObjectToWorld(IN.positionOS);
 
                 float displacement = _DisplacementMap.SampleLevel(sampler_DisplacementMap, IN.uv, 0).r;
-                float3 displacedPositionWS = positionWS + OUT.normalWS * displacement * 0.2;
+                float3 displacedPositionWS = positionWS + OUT.normalWS * displacement * 0.1;
 
                 OUT.positionHCS = TransformWorldToHClip(displacedPositionWS.xyz);
                 OUT.tangentWS.xyz = normalize(TransformObjectToWorldDir(IN.tangentOS.xyz));
                 OUT.tangentWS.w = IN.tangentOS.w;
                 OUT.viewDirWS = normalize(_WorldSpaceCameraPos - displacedPositionWS.xyz);
-                OUT.worldPos = positionWS.xyz;
+                OUT.worldPos = displacedPositionWS.xyz;
                 OUT.uv = IN.uv;
                 return OUT;
             }
@@ -106,7 +112,7 @@ Shader "Custom/PBR"
 
             float DistributionGgx(float3 n, float3 h, float roughness)
             {
-                float a2 = pow(roughness, 2);
+                float a2 = pow(pow(roughness, 2), 2);
                 float nDotH = max(dot(n, h), 0);
                 float nDotH2 = pow(nDotH, 2);
 
@@ -133,19 +139,31 @@ Shader "Custom/PBR"
                 float ggx1 = GeometrySchlickGgx(nDotL, roughness);
                 return ggx1 * ggx2;
             }
+            #pragma shader_feature_local USE_ORM
 
             half4 frag(Varyings IN) : SV_Target
             {
                 float4 albedoSample = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
-                float4 metallicSample = SAMPLE_TEXTURE2D(_MetallicMap, sampler_MetallicMap, IN.uv);
-                float4 roughnessSample = SAMPLE_TEXTURE2D(_RoughnessMap, sampler_RoughnessMap, IN.uv);
+
                 float4 aoSample = SAMPLE_TEXTURE2D(_OcclusionMap, sampler_OcclusionMap, IN.uv);
 
                 float3 albedo = pow(albedoSample.rgb, 2.2);
+
+                #if USE_ORM
+                float4 metallicSample = SAMPLE_TEXTURE2D(_MetallicMap, sampler_MetallicMap, IN.uv);
+                float4 roughnessSample = SAMPLE_TEXTURE2D(_RoughnessMap, sampler_RoughnessMap, IN.uv);
                 float metallic = metallicSample.r;
                 float roughness = roughnessSample.r;
-                float ao = aoSample.r;
+                #else
+                float4 specGlossSample = SAMPLE_TEXTURE2D(_SpecularGlossinessMap, sampler_SpecularGlossinessMap, IN.uv);
 
+                float maxSpec = max(specGlossSample.r, max(specGlossSample.g, specGlossSample.b));
+                float metallic = maxSpec; //saturate((maxSpec - 0.04f) / (1.0f - 0.04f));
+                float roughness = 1.0 - specGlossSample.a;
+
+                #endif
+
+                float ao = aoSample.r;
 
                 // normal map
                 float3 n = normalize(IN.normalWS);
@@ -189,7 +207,6 @@ Shader "Custom/PBR"
                 }
 
 
-                lo = lo / (lo + float3(1, 1, 1));
                 float x = 1.0 / 2.2;
                 lo = pow(lo, float3(x, x, x));
 
